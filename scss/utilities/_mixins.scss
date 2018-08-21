@@ -1,0 +1,39 @@
+@mixin e($element) {
+	&_#{$element} {
+		@content;
+	}
+}
+@mixin m($modifier) {
+	&-#{$modifier} {
+		@content;
+	}
+}
+@mixin media($width) {
+	@media (min-width: $width) {
+		@content;
+	}
+}
+@mixin flexbox($dr: row, $wp: wrap, $jc: space-between) {
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	flex-direction: $dr;
+	flex-wrap: $wp;
+	justify-content: $jc;
+}
+@mixin after-headline($space) {
+	[class^='headline'] + & {
+		margin-top: $space;
+		@content;
+	}
+}
+@mixin p-r-l($r, $l: $r) {
+	padding-right: $r;
+	padding-left: $l;
+}
+@mixin m-r-l($r, $l: $r) {
+	margin-right: $r;
+	margin-left: $l;
+}

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Webapp Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="css/styles.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="logo">
+        <b>Your</b>App&trade;
+      </div>
+      <div class="notify">
+        <a href="#"><img src="icons/icon-bell.svg" alt=""></a>
+      </div>
+      <div class="vr"></div>
+      <div class="user">
+        <img src="images/member-2.jpg" alt=""> Josh Sullivan
+      </div>
+    </header>
+    <nav class="nav" role="navigation">
+      <ul>
+        <li class="nav_item-active"><a href="#"><img src="icons/icon-dashboard.svg" alt=""></a></li>
+        <li class="nav_item"><a href="#"><img src="icons/icon-members.svg" alt=""></a></li>
+        <li class="nav_item"><a href="#"><img src="icons/icon-visits.svg" alt=""></a></li>
+        <li class="nav_item"><a href="#"><img src="icons/icon-settings.svg" alt=""></a></li>
+      </ul>
+    </nav>
+    <main class="main">
+      <div class="inner-header">
+        <h1>Dashboard</h1>
+        <input type="text" placeholder="Search">
+        <button type="submit" value="Search">
+          <svg viewBox="0 0 32 32"><path d="M19.427 20.427c-1.39 0.99-3.090 1.573-4.927 1.573-4.694 0-8.5-3.806-8.5-8.5s3.806-8.5 8.5-8.5c4.694 0 8.5 3.806 8.5 8.5 0 1.837-0.583 3.537-1.573 4.927l5.585 5.585c0.55 0.55 0.546 1.431-0 1.976l-0.023 0.023c-0.544 0.544-1.431 0.546-1.976 0l-5.585-5.585zM14.5 20c3.59 0 6.5-2.91 6.5-6.5s-2.91-6.5-6.5-6.5c-3.59 0-6.5 2.91-6.5 6.5s2.91 6.5 6.5 6.5v0z"></path>
+          </svg>
+        </button>
+      </div>
+      <section class="section">
+        <p class="alert-message">
+          <b>Alert</b> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto accusantium aliquid tenetur rem
+          <a><svg viewbox="0 0 40 40"><path d="M 10,10 L 30,30 M 30,10 L 10,30" /></svg></a>
+        </p>
+        <h2>Traffic</h2>
+        <nav class="chart-nav">
+          <ol>
+            <li class="chart-nav_item"><a href="#">Hourly</a></li>
+            <li class="chart-nav_item"><a href="#">Daily</a></li>
+            <li class="chart-nav_item-active"><a href="#">Weekly</a></li>
+            <li class="chart-nav_item"><a href="#">Montly</a></li>
+          </ol>
+        </nav>
+        <div class="section-main">
+          <canvas id="traffic"></canvas>
+        </div>
+      </section>
+      <section class="section">
+        <h2>Daily trafic</h2>
+        <div class="section-main">
+          <canvas id="daily-traffic"></canvas>
+        </div>
+      </section>
+      <section class="section">
+        <h2>Mobile users</h2>
+        <div class="section-main">
+          <canvas id="mobile-users"></canvas>
+        </div>
+      </section>
+      <section class="section">
+        <h2>Sosial stats</h2>
+        <div class="section-main">
+
+        </div>
+      </section>
+      <section class="section">
+        <h2>New members</h2>
+        <div class="section-main">
+
+        </div>
+      </section>
+      <section class="section">
+        <h2>Recent activity</h2>
+        <div class="section-main">
+
+        </div>
+      </section>
+      <section class="section">
+        <h2>Message user</h2>
+        <div class="section-main">
+
+        </div>
+      </section>
+      <section class="section">
+        <h2>Settings</h2>
+        <div class="section-main">
+
+        </div>
+      </section>
+    </main>
+  </div>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+  <script type="text/javascript" src="app.js"></script>
+</body>
+
+</html>

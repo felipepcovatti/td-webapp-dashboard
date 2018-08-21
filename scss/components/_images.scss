@@ -1,0 +1,20 @@
+// .img {
+//   @include m(logo) {
+//     @extend %img-dft;
+//     margin-bottom: 1.18em;
+//     @include media($desktop) {
+//       margin-bottom: 0;
+//     }
+//   }
+//   @include m(avatar) {
+//     @extend %img-dft;
+//     @include after-headline(-1.4em);
+//     @include media($desktop) {
+//       margin-top: 11px;
+//     }
+//   }
+//   @include m(frame) {
+//     @extend %img-dft;
+//     @extend %img-box;
+//   }
+// }

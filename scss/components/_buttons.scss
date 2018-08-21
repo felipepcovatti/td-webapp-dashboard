@@ -1,0 +1,39 @@
+[class^='btn'] {
+  display: block;
+  width: 100%;
+  max-width: $max-btn-width;
+  margin: 1.65em auto 0.5em;
+  padding: 0.88em;
+  border-radius: $b-radius;
+  border: none;
+  font-size: 0.96em;
+  font-weight: $bold;
+  color: white;
+  text-transform: uppercase;
+  cursor: pointer;
+  @extend %color-transitions;
+
+  &:first-child {
+    margin-top: 0.8em;
+  }
+
+  @include media($desktop) {
+    display: inline;
+    width: auto;
+    margin-top: 1em;
+    @include m-r-l(1.5em);
+    @include p-r-l(3.63em);
+  }
+}
+
+.btn {
+  @each $type, $color in $theme-type-colors {
+    @include m($type) {
+      background-color: $color;
+
+      &:hover {
+        background-color: hover-color($color);
+      }
+    }
+  }
+}

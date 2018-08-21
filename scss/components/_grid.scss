@@ -1,0 +1,181 @@
+.container {
+  // background-image: url("../dashboard.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  max-width: 1196px;
+  margin: 0 auto;
+  width: 100%;
+  color: $custom-gray-txt;
+  // min-height: 1900px;
+}
+// header, nav, main {
+//     opacity: 0.3;
+// }
+// main {
+//     background-color: red;
+// }
+
+.container {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  grid-template-rows: 70px;
+  grid-template-areas: "header header" "nav main";
+}
+
+.header {
+  background-color: $primary-color;
+  grid-area: header;
+  @include flexbox();
+  align-items: center;
+  @include p-r-l(20px);
+
+  .notify {
+    margin-left: auto;
+
+    img {
+      width: 24px;
+    }
+  }
+
+  .vr {
+    border-right: 1px solid $primary-color-variation;
+    height: 40px;
+    opacity: 0.6;
+    @include m-r-l(20px);
+  }
+
+  .user {
+    img {
+      border-radius: 50%;
+      width: 30px;
+      vertical-align: middle;
+      margin-right: 5px;
+    }
+  }
+}
+
+.nav {
+  background-color: $primary-color-variation;
+  grid-area: nav;
+}
+
+.main {
+  grid-area: main;
+  display: grid;
+  background-color: $line-color;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: max-content;
+  grid-gap: $gap-size;
+  grid-auto-rows: auto;
+}
+
+main section:nth-of-type(1) {
+  grid-column: span 2;
+  // margin-top: (-$gap-size * 2);
+  // border-top: 1px solid $line-color;
+}
+
+main section:nth-of-type(4) {
+  grid-column: span 2;
+}
+
+.inner-header {
+  grid-column: span 2;
+  background-color: $custom-gray-bg;
+  @include flexbox();
+  align-items: center;
+  padding-right: $main-padding;
+  position: relative;
+
+  h1 {
+    margin: 0;
+    font-size: 1.3em;
+    background-color: $negative-color;
+    color: grey;
+    padding: $main-padding;
+    border-right: 1px solid $line-color;
+    // box-shadow: 0 $gap-size 0 0 $negative-color;
+    // position: relative;
+    // z-index: 1;
+  }
+
+  input {
+    border-radius: $b-radius;
+    width: 400px;
+    padding: $input-padding;
+    border: 1px solid $line-color;
+  }
+
+  button {
+    position: absolute;
+    right: $main-padding;
+    $bsize: 44px;
+    height: $bsize;
+    width: $bsize;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+
+    svg {
+      margin-top: 4px;
+      width: 1.8em;
+      fill: $primary-color;
+    }
+  }
+}
+
+.section {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: $main-padding;
+  background-color: $negative-color;
+
+  canvas {
+    width: 100% !important;
+  }
+
+  > :not(:last-child) {
+    margin-bottom: 30px;
+  }
+}
+
+.section-main {
+  position: relative;
+  width: 100%;
+  height: 400px;
+}
+
+.alert-message {
+  width: 100%;
+  color: $negative-color;
+  background-color: $primary-color;
+  border-radius: $b-radius;
+  position: relative;
+  padding-top: $p-padding;
+  padding-bottom: $p-padding;
+  @include p-r-l(3em, $p-padding);
+
+  b {
+    padding-right: 10px;
+  }
+
+  a {
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    padding: 0.8em $p-padding;
+    cursor: pointer;
+
+    svg {
+      // width: 1.2em;
+      // height: 1.2em;
+      width: 1.3em;
+      stroke: $negative-color;
+      stroke-width: 6;
+    }
+  }
+}

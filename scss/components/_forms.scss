@@ -1,0 +1,32 @@
+.form {
+  @include e(label) {
+    @include m(hidden) {
+      display: none;
+    }
+  }
+  @include e(input) {
+    display: block;
+    width: 95%;
+    max-width: $max-input-width;
+    margin: 0.8em auto 1.7em;
+    padding: 12px;
+    border: none;
+    border-bottom: 6px solid $highlight-color;
+
+    &:focus,
+    &:hover {
+      border-color: hover-color($highlight-color);
+    }
+
+    &::placeholder {
+      font-weight: $bold;
+    }
+  }
+
+  [class^='btn'] {
+    @include media($desktop) {
+      width: 100%;
+      margin: 0 auto 0.5em;
+    }
+  }
+}

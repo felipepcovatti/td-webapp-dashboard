@@ -1,0 +1,31 @@
+%link-dft {
+  font-weight: $bold;
+  text-decoration: none;
+  color: $highlight-color;
+  &:hover {
+    color: hover-color($highlight-color);
+  }
+}
+
+%img-dft {
+  display: block;
+  max-width: 100%;
+  @include m-r-l(auto);
+}
+
+%img-box {
+  padding: 10px;
+  border: 1px solid $light-primary-color;
+}
+
+%m-t-b-card {
+  margin-top: 1.6em;
+  margin-bottom: 0.5em;
+  @include media($desktop) {
+    margin-top: 0.9em;
+  }
+}
+
+%color-transitions {
+  transition: background-color 0.15s, color 0.15s, border-color 0.15s;
+}

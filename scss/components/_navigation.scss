@@ -1,0 +1,50 @@
+%nav {
+  @include e(item) {
+    display: block;
+
+    a {
+      display: block;
+      padding: 14px 28px;
+      margin: 14px 0;
+    }
+  }
+}
+
+.nav {
+  @include e(item) {
+    @extend %nav_item;
+    opacity: 0.5;
+    @include m(active) {
+      @extend %nav_item;
+      opacity: 1;
+      box-shadow: inset 4px 0 0 0 $highlight-color;
+    }
+  }
+
+  img {
+    width: 100%;
+  }
+}
+
+%chart-nav-a {
+  font-weight: 700;
+  padding: 0.4em 0.7em;
+  border-radius: 1em;
+  text-decoration: none;
+  color: $custom-gray-txt;
+}
+
+.chart-nav {
+  @include e(item) {
+    a {
+      @extend %chart-nav-a;
+    }
+    @include m(active) {
+      a {
+        @extend %chart-nav-a;
+        color: $negative-color;
+        background-color: $highlight-color;
+      }
+    }
+  }
+}

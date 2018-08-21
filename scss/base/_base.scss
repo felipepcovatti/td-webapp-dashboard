@@ -1,0 +1,26 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-margin-before: 0;
+  -webkit-margin-after: 0;
+  -webkit-margin-start: 0;
+  -webkit-margin-end: 0;
+  -webkit-padding-start: 0;
+  outline-style: none;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+li {
+  display:inline;
+}
+
+p {
+  margin-bottom: 2em;
+  font-size: 17px;
+  letter-spacing: 0.2px;
+  line-height: 1.6;
+}
