@@ -1,0 +1,73 @@
+.header {
+  color: $negative-color;
+  background-color: $primary-color;
+  grid-area: header;
+  @include flexbox();
+  @include p-r-l($dft-padding);
+}
+
+.logo {
+  padding: $dft-padding;
+  font-size: 1.4em;
+
+  a {
+    text-decoration: none;
+    color: $negative-color;
+  }
+  @include media($tablet) {
+    font-size: 1.5em;
+  }
+}
+
+.notify {
+  margin-left: auto;
+
+  a {
+    position: relative;
+    display: block;
+    padding: $dft-padding;
+  }
+
+  img {
+    width: 24px;
+  }
+
+  .circle {
+    position: absolute;
+    top: 8px;
+    right: 5px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background-color: $highlight-color;
+  }
+}
+
+.vr {
+  border-right: 1px solid $primary-color-dark;
+  height: 40px;
+  opacity: 0.6;
+  @include m-r-l($dft-padding);
+}
+
+.user {
+  padding: $dft-padding;
+
+  a {
+    text-decoration: none;
+    color: $negative-color;
+  }
+
+  img {
+    border-radius: 50%;
+    width: 30px;
+    vertical-align: middle;
+    margin-right: 5px;
+  }
+  @include e(name) {
+    display: none;
+    @include media($tablet) {
+      display: inline;
+    }
+  }
+}

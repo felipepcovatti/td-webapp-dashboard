@@ -2,6 +2,7 @@
   font-weight: $bold;
   text-decoration: none;
   color: $highlight-color;
+
   &:hover {
     color: hover-color($highlight-color);
   }
@@ -28,4 +29,36 @@
 
 %color-transitions {
   transition: background-color 0.15s, color 0.15s, border-color 0.15s;
+}
+
+%variable-p-r-l {
+
+  @include p-r-l($main-small-padding);
+  @include media($tablet) {
+      @include p-r-l($main-padding);
+  }
+
+}
+%nav-a {
+  display: block;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  margin: 14px 0;
+  border-width: 4px;
+  border-style: solid;
+  border-right-color: $primary-color-dark;
+  border-top-color: $primary-color-dark;
+  border-bottom-color: $primary-color-dark;
+  transition: opacity 0.3s;
+}
+
+%chart-btn {
+  display: block;
+  font-weight: 700;
+  padding: 0.4em 0.7em;
+  border-radius: 1em;
+  text-decoration: none;
+  color: $custom-gray-txt;
+  transition: color 0.2s;
+
 }

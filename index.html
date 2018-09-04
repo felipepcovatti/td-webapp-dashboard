@@ -1,108 +1,195 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="utf-8">
-  <title>Webapp Dashboard</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="css/styles.css" rel="stylesheet">
-</head>
-
-<body>
-  <div class="container">
+  <head>
+    <meta charset="utf-8">
+    <title>Webapp Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/styles.css" rel="stylesheet">
+  </head>
+  <body class="container">
     <header class="header">
       <div class="logo">
-        <b>Your</b>App&trade;
+        <a href="#"><b>Your</b>App&trade;</a>
       </div>
       <div class="notify">
         <a href="#"><img src="icons/icon-bell.svg" alt=""></a>
       </div>
       <div class="vr"></div>
       <div class="user">
-        <img src="images/member-2.jpg" alt=""> Josh Sullivan
+        <a href="#"><img src="images/member-2.jpg" alt=""> <span class="user_name">Josh Sullivan</span></a>
       </div>
     </header>
     <nav class="nav" role="navigation">
-      <ul>
-        <li class="nav_item-active"><a href="#"><img src="icons/icon-dashboard.svg" alt=""></a></li>
-        <li class="nav_item"><a href="#"><img src="icons/icon-members.svg" alt=""></a></li>
-        <li class="nav_item"><a href="#"><img src="icons/icon-visits.svg" alt=""></a></li>
-        <li class="nav_item"><a href="#"><img src="icons/icon-settings.svg" alt=""></a></li>
+      <ul class="nav_list">
+        <li class="nav_list_item-active"><a href="#"><img src="icons/icon-dashboard.svg" alt=""></a></li>
+        <li class="nav_list_item"><a href="#"><img src="icons/icon-members.svg" alt=""></a></li>
+        <li class="nav_list_item"><a href="#"><img src="icons/icon-visits.svg" alt=""></a></li>
+        <li class="nav_list_item"><a href="#"><img src="icons/icon-settings.svg" alt=""></a></li>
       </ul>
     </nav>
     <main class="main">
       <div class="inner-header">
         <h1>Dashboard</h1>
-        <input type="text" placeholder="Search">
-        <button type="submit" value="Search">
-          <svg viewBox="0 0 32 32"><path d="M19.427 20.427c-1.39 0.99-3.090 1.573-4.927 1.573-4.694 0-8.5-3.806-8.5-8.5s3.806-8.5 8.5-8.5c4.694 0 8.5 3.806 8.5 8.5 0 1.837-0.583 3.537-1.573 4.927l5.585 5.585c0.55 0.55 0.546 1.431-0 1.976l-0.023 0.023c-0.544 0.544-1.431 0.546-1.976 0l-5.585-5.585zM14.5 20c3.59 0 6.5-2.91 6.5-6.5s-2.91-6.5-6.5-6.5c-3.59 0-6.5 2.91-6.5 6.5s2.91 6.5 6.5 6.5v0z"></path>
-          </svg>
-        </button>
+        <div class="searc-bar">
+          <input type="text" placeholder="Search">
+          <button type="submit" value="Search">
+              <svg viewBox="0 0 32 32"><path d="M19.427 20.427c-1.39 0.99-3.090 1.573-4.927 1.573-4.694 0-8.5-3.806-8.5-8.5s3.806-8.5 8.5-8.5c4.694 0 8.5 3.806 8.5 8.5 0 1.837-0.583 3.537-1.573 4.927l5.585 5.585c0.55 0.55 0.546 1.431-0 1.976l-0.023 0.023c-0.544 0.544-1.431 0.546-1.976 0l-5.585-5.585zM14.5 20c3.59 0 6.5-2.91 6.5-6.5s-2.91-6.5-6.5-6.5c-3.59 0-6.5 2.91-6.5 6.5s2.91 6.5 6.5 6.5v0z"></path>
+              </svg>
+            </button>
+        </div>
       </div>
-      <section class="section">
-        <p class="alert-message">
-          <b>Alert</b> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto accusantium aliquid tenetur rem
-          <a><svg viewbox="0 0 40 40"><path d="M 10,10 L 30,30 M 30,10 L 10,30" /></svg></a>
-        </p>
-        <h2>Traffic</h2>
-        <nav class="chart-nav">
-          <ol>
-            <li class="chart-nav_item"><a href="#">Hourly</a></li>
-            <li class="chart-nav_item"><a href="#">Daily</a></li>
-            <li class="chart-nav_item-active"><a href="#">Weekly</a></li>
-            <li class="chart-nav_item"><a href="#">Montly</a></li>
-          </ol>
-        </nav>
-        <div class="section-main">
-          <canvas id="traffic"></canvas>
+      <div class="inner-main">
+        <div class="message-wrapper">
+          <div class="alert-message">
+            <span><b>Alert</b>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto accusantium aliquid tenetur rem</span>
+            <a id="close-alert"><svg viewbox="0 0 40 40"><path d="M 10,10 L 30,30 M 30,10 L 10,30" /></svg></a>
+          </div>
         </div>
-      </section>
-      <section class="section">
-        <h2>Daily trafic</h2>
-        <div class="section-main">
-          <canvas id="daily-traffic"></canvas>
+        <div class="row">
+          <section class="section">
+            <h2>Traffic</h2>
+            <div class="chart-opt">
+              <ol class="chart-opt_list">
+                <li class="chart-opt_list_item"><button>Hourly</button></li>
+                <li class="chart-opt_list_item"><button>Daily</button></li>
+                <li class="chart-opt_list_item-active"><button>Weekly</button></li>
+                <li class="chart-opt_list_item"><button>Monthly</button></li>
+              </ol>
+            </div>
+            <div class="section-main">
+              <canvas class="canvas" id="traffic"></canvas>
+            </div>
+          </section>
         </div>
-      </section>
-      <section class="section">
-        <h2>Mobile users</h2>
-        <div class="section-main">
-          <canvas id="mobile-users"></canvas>
+        <div class="row">
+          <section class="section">
+            <h2>Daily trafic</h2>
+            <div class="section-main">
+              <canvas class="canvas" id="daily-traffic"></canvas>
+            </div>
+          </section>
+          <section class="section">
+            <h2>Mobile users</h2>
+            <div class="section-main">
+              <canvas class="canvas" id="mobile-users"></canvas>
+            </div>
+          </section>
         </div>
-      </section>
-      <section class="section">
-        <h2>Sosial stats</h2>
-        <div class="section-main">
+        <div class="row">
+          <section class="section">
+            <h2>Sosial stats</h2>
+            <div class="section-main">
+              <div class="section-main_group">
+                <div class="section-main_group_item">
+                  <div class="wrapper-social-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="social-icon" viewBox="0 0 32 26.15">
+                        <path d="M32 3.1c-1.2.5-2.4.9-3.8 1A6.5 6.5 0 0 0 31.1.5c-1.3.8-2.7 1.3-4.2 1.6A6.3 6.3 0 0 0 22.2 0a6.6 6.6 0 0 0-6.6 6.6l.2 1.5A18.9 18.9 0 0 1 2.2 1.2c-.6 1-.9 2.1-.9 3.3 0 2.3 1.2 4.3 2.9 5.5-1.1 0-2.1-.3-3-.8v.1c0 3.2 2.3 5.8 5.3 6.4l-1.7.2-1.2-.1a6.7 6.7 0 0 0 6.1 4.6 13 13 0 0 1-8.2 2.8l-1.6-.1A18.6 18.6 0 0 0 28.7 7.4v-.8c1.3-1 2.4-2.2 3.3-3.5z"/>
+                      </svg>
+                  </div>
+                  <div class="wrapper-social-spans">
+                    <span class="social-name">
+                      Twhiter
+                      </span>
+                    <span class="social-number">
+                      10,345
+                     </span>
+                  </div>
+                </div>
+                <div class="section-main_group_item">
+                  <div class="wrapper-social-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="social-icon" viewBox="18 6.1 22.4 48.3">
+                        <path d="M40.4 21.7h-7.6v-5c0-1.9 1.2-2.3 2.1-2.3h5.4V6.1H33c-8.3 0-10.1 6.2-10.1 10.1v5.5H18v8.6h4.8v24.1h10V30.3h6.8l.8-8.6z"/>
+                      </svg>
+                  </div>
+                  <div class="wrapper-social-span">
+                    <span class="social-name">
+                      Facebook
+                      </span>
+                    <span class="social-number">
+                      8,739
+                      </span>
+                  </div>
+                </div>
+                <div class="section-main_group_item">
+                  <div class="wrapper-social-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="social-icon" viewBox=".8 0 32 31.8">
+                      <path d="M17.7 25.7l-.1-.8-.2-.7-.3-.7-.4-.6-.5-.6-.5-.5-.6-.5-.6-.4-.6-.4-.6-.4h-1l-2 .1c-.7.1-1.4.2-2.1.5-.7.2-1.3.5-1.9.9s-1 .8-1.3 1.4c-.3.6-.5 1.3-.5 2.1 0 .9.2 1.7.7 2.3.5.7 1.1 1.2 1.8 1.6s1.5.7 2.3.9l2.4.3 2.2-.2c.7-.2 1.3-.4 1.9-.8.6-.3 1.1-.8 1.4-1.4.3-.6.5-1.3.5-2.1zM15.4 9.1a11.3 11.3 0 0 0-1.2-5c-.4-.8-.9-1.5-1.6-2a4 4 0 0 0-2.3-.8c-1.2 0-2.1.4-2.8 1.3-.7.9-1 1.9-1 3.2l.2 1.9c.1.7.4 1.3.7 2 .3.7.7 1.3 1.1 1.8.4.5.9 1 1.5 1.3.6.3 1.2.5 1.9.5 1.2 0 2.1-.4 2.7-1.2.5-.7.8-1.7.8-3zM12.9 0h8.4l-2.6 1.5h-2.6c.9.6 1.6 1.4 2.1 2.4a7.2 7.2 0 0 1 .4 5.7c-.3.7-.7 1.3-1.1 1.8-.4.4-.8.9-1.3 1.2l-1.1 1.2a2 2 0 0 0-.4 1.3c0 .3.1.7.3 1l.8.9 1.1.9 1.2 1.1 1.1 1.3.8 1.6a6.8 6.8 0 0 1-2.4 7.4c-1.9 1.7-4.6 2.5-8.1 2.5l-2.3-.2a10.3 10.3 0 0 1-4.4-1.7 5 5 0 0 1-1.5-1.7C1 27.6.8 26.9.8 26c0-.8.2-1.6.7-2.6a6 6 0 0 1 1.8-2.1c.8-.6 1.8-1.1 2.8-1.4a32.5 32.5 0 0 1 5.9-1c-.8-1.1-1.2-2-1.2-2.9v-.5l.1-.4.2-.4.1-.4-1.3.1c-1.9 0-3.5-.6-4.9-1.9a6 6 0 0 1-2-4.7C3 6 3.6 4.4 4.8 3A8.5 8.5 0 0 1 9.3.4c1.2-.3 2.4-.4 3.6-.4zm19.9 4.9v2.5h-4.9v4.9h-2.5V7.4h-4.9V4.9h4.9V0h2.5v4.9h4.9z"/>
+                      </svg>
+                  </div>
+                  <div class="wrapper-social-span">
+                    <span class="social-name">
+                    Google+
+                      </span>
+                    <span class="social-number">
+                    2,530
+                      </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+        <div class="row">
+          <section class="section">
+            <h2>New members</h2>
+            <div class="section-main">
+              <div class="section-main_list">
+                <div class="section-main_list_item">
+                  Lorem ipsum dolor
+                </div>
+                <div class="section-main_list_item">
+                  Lorem ipsum dolor
+                </div>
+                <div class="section-main_list_item">
+                  Lorem ipsum dolor
+                </div>
+                <div class="section-main_list_item">
+                  Lorem ipsum dolor
+                </div>
+              </div>
+            </div>
+          </section>
+          <section class="section">
+            <h2>Recent activity</h2>
+            <div class="section-main">
+              <div class="section-main_list">
+                <div class="section-main_list_item">
+                  Lorem ipsum dolor
+                </div>
+                <div class="section-main_list_item">
+                  Lorem ipsum dolor
+                </div>
+                <div class="section-main_list_item">
+                  Lorem ipsum dolor
+                </div>
+                <div class="section-main_list_item">
+                  Lorem ipsum dolor
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+        <div class="row">
+          <section class="section">
+            <h2>Message user</h2>
+            <div class="section-main">
+              <form action="">
+                <input type="text">
+                <textarea name="" id=""></textarea>
+                <button value="SEND"></button>
+              </form>
+            </div>
+          </section>
+          <section class="section">
+            <h2>Settings</h2>
+            <div class="section-main">
 
+            </div>
+          </section>
         </div>
-      </section>
-      <section class="section">
-        <h2>New members</h2>
-        <div class="section-main">
-
-        </div>
-      </section>
-      <section class="section">
-        <h2>Recent activity</h2>
-        <div class="section-main">
-
-        </div>
-      </section>
-      <section class="section">
-        <h2>Message user</h2>
-        <div class="section-main">
-
-        </div>
-      </section>
-      <section class="section">
-        <h2>Settings</h2>
-        <div class="section-main">
-
-        </div>
-      </section>
+      </div>
     </main>
-  </div>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
-  <script type="text/javascript" src="app.js"></script>
-</body>
-
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+  </body>
 </html>

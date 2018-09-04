@@ -13,15 +13,14 @@
 		@content;
 	}
 }
-@mixin flexbox($dr: row, $wp: wrap, $jc: space-between) {
+@mixin flexbox($wp: wrap, $ai: center) {
 	display: -webkit-box;
 	display: -moz-box;
 	display: -ms-flexbox;
 	display: -webkit-flex;
 	display: flex;
-	flex-direction: $dr;
 	flex-wrap: $wp;
-	justify-content: $jc;
+	align-items: $ai;
 }
 @mixin after-headline($space) {
 	[class^='headline'] + & {

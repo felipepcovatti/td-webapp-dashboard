@@ -1,0 +1,157 @@
+// commom styles
+.section {
+  @include flexbox();
+  justify-content: space-between;
+  @extend %variable-p-r-l;
+  padding-top: $main-padding;
+  padding-bottom: $main-padding;
+  background-color: $negative-color;
+  @include media($desktop) {
+    &:first-child {
+      padding-left: $small-vw-portion;
+    }
+
+    &:last-child {
+      padding-right: $small-vw-portion;
+    }
+  }
+
+  h2 {
+    font-size: 1em;
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+
+  > :not(:last-child) {
+    margin-bottom: $dft-padding * 2;
+  }
+}
+.section-main {
+  position: relative;
+  width: 100%;
+  @include e(group) {
+    display: grid;
+    @include media($tablet) {
+      justify-content: space-between;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-gap: 3%;
+    }
+    @include e(item) {
+      border: $line-size solid $line-color;
+      border-radius: $b-radius;
+      background-color: $custom-gray-bg;
+      padding: ($dft-padding * 1.25);
+      @include flexbox();
+      flex-direction: column;
+      @include media($desktop) {
+        flex-direction: row;
+      }
+
+      &:not(:last-child) {
+        margin-bottom: 20px;
+        @include media($tablet) {
+          margin-bottom: 0;
+        }
+      }
+
+      > :not(:last-child) {
+        margin-bottom: $dft-padding;
+        @include media($desktop) {
+          margin-bottom: 0;
+          margin-right: $dft-padding;
+        }
+      }
+    }
+  }
+  @include e(list) {
+    @include e(item) {
+      padding: $dft-padding;
+      &:not(:last-child) {
+        border-bottom: 1px solid $custom-gray-bg;
+      }
+    }
+  }
+}
+// end commom styles
+
+// Charts
+.chart-opt {
+  margin-bottom: $dft-padding;
+  @include e(list) {
+    @include flexbox();
+    @include e(item) {
+      button {
+        @extend %chart-btn;
+
+        &:hover {
+          color: hover-color($custom-gray-txt);
+        }
+      }
+      @include m(active) {
+        button {
+          @extend %chart-btn;
+          color: $negative-color;
+          background-color: $highlight-color;
+        }
+      }
+    }
+  }
+}
+.canvas {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 250px !important;
+  max-height: 330px !important;
+}
+
+
+// Social
+.wrapper-social {
+  @include m(icon) {
+    background-color: $primary-color;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.social {
+  @include m(icon) {
+    fill: $negative-color;
+    width: 50%;
+    height: 50%;
+  }
+  @include m(name) {
+    display: block;
+    color: $primary-color;
+    font-weight: $bold;
+    font-size: 1.1em;
+    letter-spacing: 0.02em;
+    text-align: center;
+    @include media($desktop) {
+      text-align: left;
+    }
+  }
+  @include m(number) {
+    display: block;
+    font-size: 2em;
+    font-weight: $light;
+    text-align: center;
+    @include media($tablet) {
+      font-size: 2.2em;
+    }
+    @include media($desktop) {
+      font-size: 2.8em;
+      text-align: left;
+    }
+  }
+}
+
+// Members and activities
+
+// Message user
+
+// Settings

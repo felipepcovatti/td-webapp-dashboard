@@ -1,3 +1,14 @@
+// .inner-main {
+//   >div:nth-child(-n+4) {
+//     display: none !important;
+//   }
+// }
+
+@if variable-exists(google-font-url) {
+  @import url($google-font-url);
+}
+
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -18,9 +29,8 @@ li {
   display:inline;
 }
 
-p {
-  margin-bottom: 2em;
-  font-size: 17px;
-  letter-spacing: 0.2px;
-  line-height: 1.6;
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 }
