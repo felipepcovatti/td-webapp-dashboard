@@ -1,6 +1,5 @@
-// commom styles
 .section {
-  @include flexbox();
+  @include flexbox($ac:flex-start);
   justify-content: space-between;
   @extend %variable-p-r-l;
   padding-top: $main-padding;
@@ -16,87 +15,39 @@
     }
   }
 
-  h2 {
-    font-size: 1em;
-    text-transform: uppercase;
-    font-weight: 400;
-  }
-
   > :not(:last-child) {
     margin-bottom: $dft-padding * 2;
   }
-}
-.section-main {
-  position: relative;
-  width: 100%;
-  @include e(group) {
-    display: grid;
-    @include media($tablet) {
-      justify-content: space-between;
-      grid-template-columns: 1fr 1fr 1fr;
-      grid-gap: 3%;
-    }
-    @include e(item) {
-      border: $line-size solid $line-color;
-      border-radius: $b-radius;
-      background-color: $custom-gray-bg;
-      padding: ($dft-padding * 1.25);
-      @include flexbox();
-      flex-direction: column;
-      @include media($desktop) {
-        flex-direction: row;
-      }
-
-      &:not(:last-child) {
-        margin-bottom: 20px;
-        @include media($tablet) {
-          margin-bottom: 0;
-        }
-      }
-
-      > :not(:last-child) {
-        margin-bottom: $dft-padding;
-        @include media($desktop) {
-          margin-bottom: 0;
-          margin-right: $dft-padding;
-        }
-      }
-    }
+  @include e(title) {
+    font-size: 1.1em;
+    text-transform: uppercase;
+    font-weight: 400;
   }
-  @include e(list) {
-    @include e(item) {
-      padding: $dft-padding;
-      &:not(:last-child) {
-        border-bottom: 1px solid $custom-gray-bg;
-      }
-    }
+  @include e(main) {
+    width: 100%;
   }
 }
-// end commom styles
 
-// Charts
-.chart-opt {
-  margin-bottom: $dft-padding;
-  @include e(list) {
-    @include flexbox();
-    @include e(item) {
+.chartopt {
+  @include flexbox();
+  @include e(item) {
+    button {
+      @extend %chartopt-btn;
+
+      &:hover {
+        color: hover-color($custom-gray-txt);
+      }
+    }
+    @include m(active) {
       button {
-        @extend %chart-btn;
-
-        &:hover {
-          color: hover-color($custom-gray-txt);
-        }
-      }
-      @include m(active) {
-        button {
-          @extend %chart-btn;
-          color: $negative-color;
-          background-color: $highlight-color;
-        }
+        @extend %chartopt-btn;
+        color: $negative-color;
+        background-color: $highlight-color;
       }
     }
   }
 }
+
 .canvas {
   width: 100% !important;
   height: 100% !important;
@@ -104,17 +55,49 @@
   max-height: 330px !important;
 }
 
+.group {
+  display: grid;
+  @include media($tablet) {
+    justify-content: space-between;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 3%;
+  }
+  @include e(item) {
+    border: $line-size solid $line-color;
+    border-radius: $b-radius;
+    background-color: $custom-gray-bg;
+    padding: ($dft-padding * 1.25);
+    @include flexbox();
+    flex-direction: column;
+    @include media($desktop) {
+      flex-direction: row;
+    }
 
-// Social
+    &:not(:first-child) {
+      margin-top: $dft-text-height;
+      @include media($tablet) {
+        margin-top: 0;
+      }
+    }
+
+    > :not(:first-child) {
+      margin-top: $dft-padding;
+      @include media($desktop) {
+        margin-top: 0;
+        margin-left: $dft-padding;
+      }
+    }
+  }
+}
+
 .wrapper-social {
   @include m(icon) {
     background-color: $primary-color;
     width: 70px;
     height: 70px;
     border-radius: 50%;
-    display: flex;
+    @include flexbox();
     justify-content: center;
-    align-items: center;
   }
 }
 
@@ -150,8 +133,251 @@
   }
 }
 
-// Members and activities
+.feedlist {
+  @include e(item) {
+    @include flexbox($wp: nowrap);
+    padding: $dft-padding/2 0;
 
-// Message user
+    > * {
+      padding: $dft-padding/2 0;
+    }
 
-// Settings
+    &:not(:last-child) {
+      border-bottom: 1px solid $custom-gray-bg;
+    }
+  }
+}
+
+.item {
+  @include e(image) {
+    @extend %user-img;
+  }
+  @include e(info) {
+    margin-left: 8px;
+    @include e(h1) {}
+    @include e(h2) {
+      font-size: 0.85em;
+      display: block;
+      margin-top: 2px;
+
+      a {
+        text-decoration: none;
+        color: $primary-color;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        max-width: 55vw;
+        display: block;
+
+      }
+    }
+  }
+  @include e(right) {
+    margin-left: auto;
+    font-size: 0.9em;
+  }
+}
+
+.itembutton {
+  padding: $dft-padding/2;
+}
+
+.form {
+  @include e(button) {
+    @extend %btn;
+  }
+  @include e(label) {
+    display: none;
+  }
+  @include e(input) {
+    @extend %input;
+
+    &:focus + [data-for] {
+      // display: block;
+    }
+    @include m(autocomplete) {
+      position: relative;
+      width: 100%;
+      display: none;
+
+      ul {
+        width: 100%;
+        background-color: $negative-color;
+        position: absolute;
+        box-shadow: 0 1px 4px 0 $custom-gray-txt;
+        max-height: ($dft-text-height + ($dft-padding/1.5)) * 5;
+        overflow-y: auto;
+        z-index: 1;
+
+        li {
+          display: block;
+          cursor: pointer;
+          width: 100%;
+          font-size: $dft-font-size;
+          line-height: $dft-line-height;
+          padding-top: $dft-padding/3;
+          padding-bottom: $dft-padding/3;
+          color: $custom-grey-dark;
+          @include p-r-l($dft-padding);
+
+          &:hover {
+            background-color: $primary-color-alpha;
+          }
+
+          &:first-child:not(:hover) {
+            background-color: $primary-color;
+            color: $negative-color;
+          }
+        }
+      }
+    }
+  }
+  @include e(textarea) {
+    @extend %input;
+    resize: none;
+    height: ($dft-font-size + ($dft-padding * 2)) * 3;
+  }
+}
+
+.settings {
+  @include flexbox();
+  justify-content: space-between;
+  @include e(label) {
+    width: 100%;
+    display: none;
+  }
+  @include e(list) {
+    width: 100%;
+    padding-bottom: $dft-text-height;
+    @include flexbox($ac: flex-start, $ai: flex-start);
+    flex-direction: column;
+  }
+  @include e(select) {
+    width: 100%;
+    position: relative;
+    @include separator();
+  }
+  @include e(button) {
+    @extend %btn;
+    @include media($tablet) {
+      max-width: 48%;
+    }
+
+    &:disabled {
+      opacity: 0.6;
+
+      &:hover {
+        cursor: auto;
+        background-color: $primary-color;
+      }
+    }
+  }
+}
+
+.checkbox {
+  @include flexbox();
+  justify-content: space-between;
+  position: relative;
+  width: 100%;
+  @include media($tablet) {
+    max-width: 360px;
+  }
+  @include separator();
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  @include e(label) {
+    padding: $dft-padding $dft-padding $dft-padding 0;
+    font-size: $dft-font-size;
+    line-height: $dft-line-height;
+    width: calc(100% - #{$checkbox-btn});
+  }
+  @include e(input) {
+    display: none;
+  }
+  @include e(button) {
+    @include flexbox();
+    justify-content: space-between;
+    position: relative;
+    border-radius: 30px;
+    box-shadow: 0 0 0 2px $line-color;
+    width: $checkbox-btn;
+    padding: $dft-font-size/2;
+    font-size: $dft-font-size;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: $negative-color;
+    transition: color-transitions();
+    background-color: $line-color;
+
+    .checkbox:hover & {
+      background-color: hover-color($line-color);
+    }
+
+    &.inputischecked {
+      background-color: $primary-color;
+
+      .checkbox:hover & {
+        background-color: hover-color($primary-color);
+      }
+    }
+    @include e(on) {
+      text-align: left;
+      opacity: 0;
+      transition: opacity $dft-duration;
+
+      .inputischecked & {
+        opacity: 1;
+      }
+    }
+    @include e(off) {
+      text-align: right;
+      transition: opacity $dft-duration;
+
+      .inputischecked & {
+        opacity: 0;
+      }
+    }
+    @include e(circle) {
+      position: absolute;
+      border-radius: 50%;
+      background-color: $negative-color;
+      width: $checkbox-btn * .27;
+      height: $checkbox-btn * .27;
+      box-shadow: inset 0 0 0 2px $negative-color;
+      left: 0;
+      margin-left: $checkbox-btn-circle-margin;
+      transition: all $dft-duration ease-in-out;
+
+      .inputischecked & {
+        margin-left: -($checkbox-btn-circle-margin);
+        left: $checkbox-btn - ($checkbox-btn * .27);
+        box-shadow: inset 0 0 0 2px $line-color;
+      }
+    }
+  }
+}
+
+.selectlist {
+  padding-right: $main-padding;
+  @extend %input;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: transparent;
+  position: relative;
+  z-index: 1;
+
+  &::-ms-expand {
+    display: none;
+  }
+}
+
+.selectbutton {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: $dft-padding;
+}

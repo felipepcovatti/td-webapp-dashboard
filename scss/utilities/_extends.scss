@@ -1,64 +1,80 @@
-%link-dft {
-  font-weight: $bold;
-  text-decoration: none;
-  color: $highlight-color;
-
-  &:hover {
-    color: hover-color($highlight-color);
-  }
-}
-
-%img-dft {
-  display: block;
-  max-width: 100%;
-  @include m-r-l(auto);
-}
-
-%img-box {
-  padding: 10px;
-  border: 1px solid $light-primary-color;
-}
-
-%m-t-b-card {
-  margin-top: 1.6em;
-  margin-bottom: 0.5em;
-  @include media($desktop) {
-    margin-top: 0.9em;
-  }
-}
-
-%color-transitions {
-  transition: background-color 0.15s, color 0.15s, border-color 0.15s;
-}
-
 %variable-p-r-l {
-
   @include p-r-l($main-small-padding);
   @include media($tablet) {
-      @include p-r-l($main-padding);
+    @include p-r-l($main-padding);
   }
-
 }
-%nav-a {
+
+%navitem {
+
+  margin-left: $dft-padding;
+  margin-right: $dft-padding;
+  @include media($tablet) {
+    width: 100%;
+    margin: auto;
+  }
+}
+
+%navitem-a {
+  width: 100%;
   display: block;
-  padding-top: 14px;
-  padding-bottom: 14px;
-  margin: 14px 0;
+  padding-top: $dft-nav-padding;
+  padding-bottom: $dft-nav-padding;
   border-width: 4px;
   border-style: solid;
   border-right-color: $primary-color-dark;
-  border-top-color: $primary-color-dark;
   border-bottom-color: $primary-color-dark;
-  transition: opacity 0.3s;
+  transition: opacity $dft-duration;
 }
 
-%chart-btn {
+%chartopt-btn {
   display: block;
-  font-weight: 700;
+  font-weight: $bold;
   padding: 0.4em 0.7em;
   border-radius: 1em;
   text-decoration: none;
   color: $custom-gray-txt;
-  transition: color 0.2s;
+  transition: color-transitions();
+}
 
+%btn {
+  @include separator();
+  background-color: $primary-color;
+  padding: $main-small-padding;
+  text-transform: uppercase;
+  color: $negative-color;
+  font-weight: $bold;
+  border-radius: $b-radius * 1.1;
+  width: 100%;
+  font-size: $dft-font-size;
+  transition: color-transitions();
+  &:hover {
+    background-color: hover-color($primary-color);
+  }
+}
+
+%input {
+  display: block;
+  padding: $dft-padding;
+  border-radius: $b-radius;
+  border: 1px solid $line-color;
+  width: 100%;
+  font-size: $dft-font-size;
+  color: $custom-grey-dark;
+  @include separator();
+  &::placeholder {
+    color: lighten($custom-gray-txt, 20%);
+  }
+  label + & {
+    &:nth-child(2) {
+      margin-top: 0;
+    }
+  }
+}
+
+%user-img {
+  border-radius: 50%;
+  width: 35px;
+  min-width: 35px;
+  vertical-align: middle;
 }

@@ -1,6 +1,3 @@
-.main {
-  grid-area: main;
-}
 .inner-header {
   display: grid;
   grid-template-areas: "search" "h1";
@@ -11,40 +8,21 @@
     grid-template-columns: min-content 1fr;
     grid-template-areas: "h1 search";
   }
-  h1 {
-    font-weight: 400;
-    margin: 0;
-    font-size: 1.5em;
-    background-color: $negative-color;
-    color: grey;
-    padding-top: $main-small-padding;
-    padding-bottom: $main-small-padding;
-    @extend %variable-p-r-l;
-    grid-area: h1;
-  }
-  input {
-    border-radius: $b-radius;
-    width: 100%;
-    max-width: 450px;
-    padding: $dft-padding;
-    border: 1px solid $line-color;
-    font-size: $dft-font-size;
-  }
-  button {
-    position: absolute;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    width: ($dft-padding * 2) + $dft-font-size;
-    height: ($dft-padding * 2) + $dft-font-size;
-    svg {
-      width: $search-icon-size;
-      height: $search-icon-size;
-      fill: $primary-color;
-    }
-  }
 }
-.searc-bar {
+
+.main-h1 {
+  font-weight: 400;
+  margin: 0;
+  font-size: 1.5em;
+  background-color: $negative-color;
+  color: grey;
+  padding-top: $main-small-padding;
+  padding-bottom: $main-small-padding;
+  @extend %variable-p-r-l;
+  grid-area: h1;
+}
+
+.search-bar {
   @include flexbox();
   position: relative;
   justify-content: flex-end;
@@ -57,7 +35,20 @@
     padding-bottom: 0;
     @include p-r-l($main-padding);
   }
+
+  input {
+    @extend %input;
+    width: 100%;
+    @include media($tablet) {
+        max-width: 450px;
+    }
+  }
+
+  button {
+    position: absolute;
+  }
 }
+
 .inner-main {
   margin: 0 auto;
   display: grid;
@@ -66,56 +57,64 @@
   position: relative;
   grid-template-columns: 1fr;
 }
+
 .row {
   display: grid;
   grid-gap: $gap-size;
   background-color: $line-color;
-  grid-auto-rows: minmax(min-content,1fr);
+  // grid-auto-rows: minmax(min-content,1fr);
   @include media($desktop) {
     grid-auto-columns: minmax(min-content,1fr);
     grid-auto-flow: column;
   }
 }
-.message-wrapper {
-  padding-top: 20px;
+
+
+
+.placeholder-message {
+  overflow: hidden;
   @extend %variable-p-r-l;
   background-color: $negative-color;
   margin-bottom: -$gap-size;
-  overflow: hidden;
+  transition: height $dft-duration * 2;
+  &.shrink {
+    height: $gap-size;
+  }
 }
-.alert-message {
+
+
+
+.message-alert {
+  margin-top: $main-top-padding;
+  @include flexbox();
+  position: relative;
+  justify-content: flex-end;
   width: 100%;
   color: $negative-color;
   background-color: $primary-color;
   border-radius: $b-radius;
   position: relative;
   font-size: $dft-font-size;
+  padding: $dft-box-padding $dft-padding;
+  @include media($desktop) {
+    padding-left: calc(#{$small-vw-portion} - #{$main-padding});
+    padding-right: calc(#{$small-vw-portion} - #{$main-padding});
+  }
+
   span {
-    display: block;
-    padding: $dft-padding+2px ($dft-padding + 30px) $dft-padding+2px $dft-padding;
-    @include media($desktop) {
-      padding-left: calc($small-vw-portion - #{$main-padding});
-      padding-right: calc($small-vw-portion - #{$main-padding});
+    flex-basis: 100%;
+    padding-right: $dft-padding + $dft-font-size + ($dft-box-padding * 2);
+
+    b {
+      padding-right: $dft-padding;
     }
   }
-  b {
-    padding-right: $dft-padding;
-  }
-  a {
-    display: block;
+
+  .alert-close {
     position: absolute;
-    right: 0;
-    top: 0;
-    padding: $dft-padding - 1px;
-    cursor: pointer;
+    top: 1px;
+    padding: $dft-box-padding;
     border-radius: $b-radius;
-    @include media($desktop) {
-      right: calc($small-vw-portion - #{$main-padding});
-    }
-    svg {
-      width: $dft-font-size + 5px;
-      stroke: $negative-color;
-      stroke-width: 6;
-    }
+
   }
 }

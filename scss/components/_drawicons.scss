@@ -1,0 +1,60 @@
+.drawsearch {
+  width: ($dft-padding * 2) + $dft-font-size;
+  height: ($dft-padding * 2) + $dft-font-size;
+  padding: ($dft-padding/2) + 2px;
+  position: relative;
+  @include e(handle) {
+    position: absolute;
+    width: 16px;
+    height: 1px;
+    border-bottom: 2px solid $primary-color;
+    transform: translateX(9px) translateY(17px) rotate(45deg);
+  }
+  @include e(circle) {
+    position: absolute;
+    width: 19px;
+    height: 19px;
+    border-radius: 50%;
+    border: 2px solid $primary-color;
+    background-color: $negative-color;
+  }
+}
+
+.drawclose {
+  width: $dft-font-size;
+  height: $dft-font-size;
+
+  @include e(line1) {
+    position: absolute;
+    width: $dft-font-size;
+    height: 1px;
+    border-bottom: $x-stroke solid $negative-color;
+    transform: translateY(($dft-font-size/2) - ($x-stroke/2)) rotate(45deg);
+  }
+  @include e(line2) {
+    position: absolute;
+    width: $dft-font-size;
+    height: 1px;
+    border-bottom: 3px solid $negative-color;
+    transform: translateY(($dft-font-size/2) - ($x-stroke/2)) rotate(-45deg);
+  }
+}
+
+.drawrightarrow {
+  @include drawarrow();
+}
+
+.drawdownarrow {
+  @include drawarrow(135deg);
+}
+
+.drawuparrow {
+  @include drawarrow(-45deg);
+}
+
+.drawcircle {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background-color: $highlight-color;
+}

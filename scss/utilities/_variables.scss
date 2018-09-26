@@ -14,13 +14,21 @@ $pg-sides-space: 15px;
   width: $tablet;
 }
 
-
+$dft-duration: .3s;
+$x-stroke: 3px;
+$checkbox-btn: 100px;
+$checkbox-btn-circle-margin: 5px;
 $b-radius: 5px;
+$dft-nav-padding: 12px;
 $dft-padding: 12px;
+$dft-box-padding: 14px;
 $dft-font-size: 16px;
+$dft-line-height: 1.125;
+$dft-text-height: $dft-font-size * $dft-line-height;
 $main-padding: $dft-padding * 3;
 $main-big-padding: $main-padding * 2;
 $main-small-padding: $main-padding/2;
+$main-top-padding: 20px;
 $small-vw-portion: 6vw;
 
 $search-icon-size: $dft-font-size * 1.75;
@@ -43,6 +51,7 @@ $primary-color-light: #a7abff;
 $light-primary-color: lighten($primary-color, 40%);
 $line-color: #bfbfbf;
 $custom-gray-txt: #797979;
+$custom-grey-dark: darken($custom-gray-txt, 20%);
 $custom-gray-bg: #f2f2f2;
 
 // for js

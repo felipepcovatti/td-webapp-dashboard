@@ -1,3 +1,6 @@
 @function hover-color($color) {
   @return darken($color, 15%);
 }
+@function color-transitions($duration: $dft-duration) {
+  @return background-color $duration, color $duration, border-color $duration;
+}

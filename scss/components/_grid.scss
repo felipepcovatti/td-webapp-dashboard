@@ -1,0 +1,32 @@
+.container {
+  min-width: 300px;
+  font-family: $primaryFont;
+  font-weight: $regular;
+  color: $custom-gray-txt;
+  display: grid;
+  grid-template-rows: 60px;
+  grid-template-areas: "header" "nav" "main";
+  grid-template-columns: 1fr;
+  @include media($tablet) {
+    grid-template-areas: "header header" "nav main";
+    grid-template-columns: 80px 1fr;
+    grid-template-rows: 68px;
+  }
+}
+
+.header {
+  color: $negative-color;
+  background-color: $primary-color;
+  grid-area: header;
+  @include flexbox();
+  @include p-r-l($dft-padding);
+}
+
+.main {
+  grid-area: main;
+}
+
+.nav {
+  background-color: $primary-color-dark;
+  grid-area: nav;
+}

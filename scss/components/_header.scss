@@ -1,9 +1,5 @@
 .header {
-  color: $negative-color;
-  background-color: $primary-color;
-  grid-area: header;
-  @include flexbox();
-  @include p-r-l($dft-padding);
+  position: relative;
 }
 
 .logo {
@@ -19,27 +15,103 @@
   }
 }
 
+@keyframes ringbell {
+  10% {
+    transform: rotate(15deg);
+  }
+  30% {
+    transform:  rotate(-15deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+  70% {
+    transform: rotate(-10deg);
+  }
+}
+
 .notify {
   margin-left: auto;
-
-  a {
+  position: static;
+  @include media($tablet) {
     position: relative;
-    display: block;
+  }
+
+  > button {
     padding: $dft-padding;
+    &:hover {
+      img {
+        animation-name: ringbell;
+      }
+    }
+
+    img {
+      transform-origin: top center;
+      width: 24px;
+      animation-duration: .8s;
+      animation-timing-function:ease;
+    }
+
+    .drawcircle {
+      position: absolute;
+      top: 8px;
+      right: 5px;
+    }
+    .drawuparrow {
+      display: none;
+      position: absolute;
+      background-color: $negative-color;
+      border: none;
+      transform-origin: top left;
+      bottom: -17px;
+    }
   }
 
-  img {
-    width: 24px;
+}
+
+
+
+.notifications {
+  display: none;
+  font-size: 0.95em;
+  border-radius: $b-radius/2;
+  position: absolute;
+  background-color: $negative-color;
+  width: 400px;
+  max-width: 100%;
+  z-index: 1;
+  right: 0;
+  box-shadow: 0 0 9px 0 $primary-color-dark;
+  @include media($tablet) {
+    max-width: none;
   }
 
-  .circle {
-    position: absolute;
-    top: 8px;
-    right: 5px;
-    width: 9px;
-    height: 9px;
-    border-radius: 50%;
-    background-color: $highlight-color;
+  > div {
+    @include flexbox($wp:nowrap);
+    padding: $dft-padding * 2 $dft-padding;
+    background-color: $primary-color;
+    width: 100%;
+    border: 1px solid $negative-color;
+
+    &:not(:first-child) {
+      margin-top: -1px;
+    }
+
+    .drawcircle {
+      display: inline-block;
+      margin-right: 10px;
+      position: relative;
+    }
+
+    span {
+      padding-right: $dft-padding * 2;
+    }
+
+    button {
+      padding: $dft-padding;
+      position: absolute;
+      right: 0;
+    }
   }
 }
 
@@ -52,20 +124,24 @@
 
 .user {
   padding: $dft-padding;
-
-  a {
-    text-decoration: none;
-    color: $negative-color;
-  }
-
   img {
-    border-radius: 50%;
-    width: 30px;
-    vertical-align: middle;
-    margin-right: 5px;
+    @extend %user-img;
+  }
+  &:hover {
+    position: absolute;
+    right: $dft-padding;
+    background-color: $primary-color;
+    @include media($tablet) {
+      position: initial;
+    }
   }
   @include e(name) {
+    color: $negative-color;
     display: none;
+    margin-left: 8px;
+    :hover > & {
+      display: inline;
+    }
     @include media($tablet) {
       display: inline;
     }

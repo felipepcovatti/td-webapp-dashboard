@@ -1,33 +1,46 @@
-.nav {
-  background-color: $primary-color-dark;
-  grid-area: nav;
-  @include e(list) {
-    @include e(item) {
-      display: block;
+.navlist {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20%, 1fr));
+  @include media($tablet) {
+  padding-top: $dft-padding;
+  grid-row-gap: $dft-padding;
+    grid-template-columns: 1fr;
+  }
+  @include e(item) {
+    @extend %navitem;
+    a {
+      opacity: 0.5;
+      border-left-color: $primary-color-dark;
+      border-top-color: $primary-color-dark;
+      @extend %navitem-a;
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+    @include m(active) {
+    @extend %navitem;
+
       a {
-        opacity: 0.5;
+        opacity: 1;
+        border-top-color: $highlight-color;
         border-left-color: $primary-color-dark;
-        @extend %nav-a;
-        &:hover {
-          opacity: 0.7;
-        }
-      }
-      @include m(active) {
-        display: block;
-        a {
-          opacity: 1;
+
+        @extend %navitem-a;
+        @include media($tablet) {
           border-left-color: $highlight-color;
-          @extend %nav-a;
+          border-top-color: $primary-color-dark;
         }
       }
     }
-    img {
-      display: block;
-      width: 50%;
-      @include media($tablet) {
-        width: 40%;
-      }
-      margin: 0 auto;
+  }
+
+  img {
+    display: block;
+    margin: 0 auto;
+    width: 25px;
+    @include media($tablet) {
+      width: 40%;
     }
+
   }
 }

@@ -1,195 +1,372 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>Webapp Dashboard</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="css/styles.css" rel="stylesheet">
-  </head>
-  <body class="container">
-    <header class="header">
-      <div class="logo">
-        <a href="#"><b>Your</b>App&trade;</a>
-      </div>
-      <div class="notify">
-        <a href="#"><img src="icons/icon-bell.svg" alt=""></a>
-      </div>
-      <div class="vr"></div>
-      <div class="user">
-        <a href="#"><img src="images/member-2.jpg" alt=""> <span class="user_name">Josh Sullivan</span></a>
-      </div>
-    </header>
-    <nav class="nav" role="navigation">
-      <ul class="nav_list">
-        <li class="nav_list_item-active"><a href="#"><img src="icons/icon-dashboard.svg" alt=""></a></li>
-        <li class="nav_list_item"><a href="#"><img src="icons/icon-members.svg" alt=""></a></li>
-        <li class="nav_list_item"><a href="#"><img src="icons/icon-visits.svg" alt=""></a></li>
-        <li class="nav_list_item"><a href="#"><img src="icons/icon-settings.svg" alt=""></a></li>
-      </ul>
-    </nav>
-    <main class="main">
-      <div class="inner-header">
-        <h1>Dashboard</h1>
-        <div class="searc-bar">
-          <input type="text" placeholder="Search">
-          <button type="submit" value="Search">
-              <svg viewBox="0 0 32 32"><path d="M19.427 20.427c-1.39 0.99-3.090 1.573-4.927 1.573-4.694 0-8.5-3.806-8.5-8.5s3.806-8.5 8.5-8.5c4.694 0 8.5 3.806 8.5 8.5 0 1.837-0.583 3.537-1.573 4.927l5.585 5.585c0.55 0.55 0.546 1.431-0 1.976l-0.023 0.023c-0.544 0.544-1.431 0.546-1.976 0l-5.585-5.585zM14.5 20c3.59 0 6.5-2.91 6.5-6.5s-2.91-6.5-6.5-6.5c-3.59 0-6.5 2.91-6.5 6.5s2.91 6.5 6.5 6.5v0z"></path>
-              </svg>
-            </button>
+
+<head>
+  <meta charset="utf-8">
+  <title>Webapp Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="css/styles.css" rel="stylesheet">
+</head>
+
+<body class="container">
+  <header class="header">
+    <div class="logo">
+      <a href="#"><b>Your</b>App&trade;</a>
+    </div>
+    <div class="notify">
+      <button id="bellbtn"><img src="icons/icon-bell.svg" alt=""><div class="drawcircle"></div><div class="drawuparrow"></div></button>
+      <div class="notifications" id="notificationpanel">
+        <div class="notification">
+          <div class="drawcircle"></div>
+          <span>This is the first lorem ipsum notification</span>
+          <button class="notification-close">
+            <div class="drawclose">
+              <div class="drawclose_line1"></div>
+              <div class="drawclose_line2"></div>
+            </div>
+          </button>
+        </div>
+        <div class="notification">
+          <div class="drawcircle"></div>
+          <span>This is the second lorem ipsum notification</span>
+          <button>
+            <div class="drawclose">
+              <div class="drawclose_line1"></div>
+              <div class="drawclose_line2"></div>
+            </div>
+          </button>
         </div>
       </div>
-      <div class="inner-main">
-        <div class="message-wrapper">
-          <div class="alert-message">
-            <span><b>Alert</b>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto accusantium aliquid tenetur rem</span>
-            <a id="close-alert"><svg viewbox="0 0 40 40"><path d="M 10,10 L 30,30 M 30,10 L 10,30" /></svg></a>
+    </div>
+    <div class="vr"></div>
+    <button class="user" id="userbtn">
+      <img src="images/member-2.jpg" alt="">
+      <span class="user_name">Troy Watson</span>
+    </button>
+  </header>
+  <nav class="nav" role="navigation">
+    <ul class="navlist">
+      <li class="navlist_item-active"><a href="#"><img src="icons/icon-dashboard.svg" alt=""></a></li>
+      <li class="navlist_item"><a href="#"><img src="icons/icon-members.svg" alt=""></a></li>
+      <li class="navlist_item"><a href="#"><img src="icons/icon-visits.svg" alt=""></a></li>
+      <li class="navlist_item"><a href="#"><img src="icons/icon-settings.svg" alt=""></a></li>
+    </ul>
+  </nav>
+  <main class="main">
+    <div class="inner-header">
+      <h1 class="main-h1">Dashboard</h1>
+      <div class="search-bar">
+        <input type="search" placeholder="Search">
+        <button>
+          <div class="search-bar_icon">
+            <div class="drawsearch">
+              <div class="drawsearch_handle">
+              </div>
+              <div class="drawsearch_circle">
+              </div>
+            </div>
           </div>
+        </button>
+      </div>
+    </div>
+    <div class="inner-main">
+      <div class="placeholder-message">
+        <div class="message-alert">
+          <span><b>Alert</b>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto accusantium aliquid tenetur rem</span>
+          <button class="alert-close">
+            <div class="drawclose">
+              <div class="drawclose_line1"></div>
+              <div class="drawclose_line2"></div>
+            </div>
+          </button>
         </div>
-        <div class="row">
-          <section class="section">
-            <h2>Traffic</h2>
-            <div class="chart-opt">
-              <ol class="chart-opt_list">
-                <li class="chart-opt_list_item"><button>Hourly</button></li>
-                <li class="chart-opt_list_item"><button>Daily</button></li>
-                <li class="chart-opt_list_item-active"><button>Weekly</button></li>
-                <li class="chart-opt_list_item"><button>Monthly</button></li>
-              </ol>
-            </div>
-            <div class="section-main">
-              <canvas class="canvas" id="traffic"></canvas>
-            </div>
-          </section>
-        </div>
-        <div class="row">
-          <section class="section">
-            <h2>Daily trafic</h2>
-            <div class="section-main">
-              <canvas class="canvas" id="daily-traffic"></canvas>
-            </div>
-          </section>
-          <section class="section">
-            <h2>Mobile users</h2>
-            <div class="section-main">
-              <canvas class="canvas" id="mobile-users"></canvas>
-            </div>
-          </section>
-        </div>
-        <div class="row">
-          <section class="section">
-            <h2>Sosial stats</h2>
-            <div class="section-main">
-              <div class="section-main_group">
-                <div class="section-main_group_item">
-                  <div class="wrapper-social-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="social-icon" viewBox="0 0 32 26.15">
+      </div>
+      <div class="row">
+        <section class="section">
+          <h2 class="section_title">Traffic</h2>
+          <div class="section_element">
+            <ol class="chartopt">
+              <li class="chartopt_item"><button>Hourly</button></li>
+              <li class="chartopt_item"><button>Daily</button></li>
+              <li class="chartopt_item-active"><button>Weekly</button></li>
+              <li class="chartopt_item"><button>Monthly</button></li>
+            </ol>
+          </div>
+          <div class="section_main">
+            <canvas class="canvas" id="traffic"></canvas>
+          </div>
+        </section>
+      </div>
+      <div class="row">
+        <section class="section">
+          <h2 class="section_title">Daily trafic</h2>
+          <div class="section_main">
+            <canvas class="canvas" id="daily-traffic"></canvas>
+          </div>
+        </section>
+        <section class="section">
+          <h2 class="section_title">Mobile users</h2>
+          <div class="section_main">
+            <canvas class="canvas" id="mobile-users"></canvas>
+          </div>
+        </section>
+      </div>
+      <div class="row">
+        <section class="section">
+          <h2 class="section_title">Sosial stats</h2>
+          <div class="section_main">
+            <div class="group">
+              <div class="group_item">
+                <div class="wrapper-social-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="social-icon" viewBox="0 0 32 26.15">
                         <path d="M32 3.1c-1.2.5-2.4.9-3.8 1A6.5 6.5 0 0 0 31.1.5c-1.3.8-2.7 1.3-4.2 1.6A6.3 6.3 0 0 0 22.2 0a6.6 6.6 0 0 0-6.6 6.6l.2 1.5A18.9 18.9 0 0 1 2.2 1.2c-.6 1-.9 2.1-.9 3.3 0 2.3 1.2 4.3 2.9 5.5-1.1 0-2.1-.3-3-.8v.1c0 3.2 2.3 5.8 5.3 6.4l-1.7.2-1.2-.1a6.7 6.7 0 0 0 6.1 4.6 13 13 0 0 1-8.2 2.8l-1.6-.1A18.6 18.6 0 0 0 28.7 7.4v-.8c1.3-1 2.4-2.2 3.3-3.5z"/>
                       </svg>
-                  </div>
-                  <div class="wrapper-social-spans">
-                    <span class="social-name">
+                </div>
+                <div class="wrapper-social-spans">
+                  <span class="social-name">
                       Twhiter
                       </span>
-                    <span class="social-number">
+                  <span class="social-number">
                       10,345
                      </span>
-                  </div>
                 </div>
-                <div class="section-main_group_item">
-                  <div class="wrapper-social-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="social-icon" viewBox="18 6.1 22.4 48.3">
+              </div>
+              <div class="group_item">
+                <div class="wrapper-social-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="social-icon" viewBox="18 6.1 22.4 48.3">
                         <path d="M40.4 21.7h-7.6v-5c0-1.9 1.2-2.3 2.1-2.3h5.4V6.1H33c-8.3 0-10.1 6.2-10.1 10.1v5.5H18v8.6h4.8v24.1h10V30.3h6.8l.8-8.6z"/>
                       </svg>
-                  </div>
-                  <div class="wrapper-social-span">
-                    <span class="social-name">
+                </div>
+                <div class="wrapper-social-span">
+                  <span class="social-name">
                       Facebook
                       </span>
-                    <span class="social-number">
+                  <span class="social-number">
                       8,739
                       </span>
-                  </div>
                 </div>
-                <div class="section-main_group_item">
-                  <div class="wrapper-social-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="social-icon" viewBox=".8 0 32 31.8">
+              </div>
+              <div class="group_item">
+                <div class="wrapper-social-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="social-icon" viewBox=".8 0 32 31.8">
                       <path d="M17.7 25.7l-.1-.8-.2-.7-.3-.7-.4-.6-.5-.6-.5-.5-.6-.5-.6-.4-.6-.4-.6-.4h-1l-2 .1c-.7.1-1.4.2-2.1.5-.7.2-1.3.5-1.9.9s-1 .8-1.3 1.4c-.3.6-.5 1.3-.5 2.1 0 .9.2 1.7.7 2.3.5.7 1.1 1.2 1.8 1.6s1.5.7 2.3.9l2.4.3 2.2-.2c.7-.2 1.3-.4 1.9-.8.6-.3 1.1-.8 1.4-1.4.3-.6.5-1.3.5-2.1zM15.4 9.1a11.3 11.3 0 0 0-1.2-5c-.4-.8-.9-1.5-1.6-2a4 4 0 0 0-2.3-.8c-1.2 0-2.1.4-2.8 1.3-.7.9-1 1.9-1 3.2l.2 1.9c.1.7.4 1.3.7 2 .3.7.7 1.3 1.1 1.8.4.5.9 1 1.5 1.3.6.3 1.2.5 1.9.5 1.2 0 2.1-.4 2.7-1.2.5-.7.8-1.7.8-3zM12.9 0h8.4l-2.6 1.5h-2.6c.9.6 1.6 1.4 2.1 2.4a7.2 7.2 0 0 1 .4 5.7c-.3.7-.7 1.3-1.1 1.8-.4.4-.8.9-1.3 1.2l-1.1 1.2a2 2 0 0 0-.4 1.3c0 .3.1.7.3 1l.8.9 1.1.9 1.2 1.1 1.1 1.3.8 1.6a6.8 6.8 0 0 1-2.4 7.4c-1.9 1.7-4.6 2.5-8.1 2.5l-2.3-.2a10.3 10.3 0 0 1-4.4-1.7 5 5 0 0 1-1.5-1.7C1 27.6.8 26.9.8 26c0-.8.2-1.6.7-2.6a6 6 0 0 1 1.8-2.1c.8-.6 1.8-1.1 2.8-1.4a32.5 32.5 0 0 1 5.9-1c-.8-1.1-1.2-2-1.2-2.9v-.5l.1-.4.2-.4.1-.4-1.3.1c-1.9 0-3.5-.6-4.9-1.9a6 6 0 0 1-2-4.7C3 6 3.6 4.4 4.8 3A8.5 8.5 0 0 1 9.3.4c1.2-.3 2.4-.4 3.6-.4zm19.9 4.9v2.5h-4.9v4.9h-2.5V7.4h-4.9V4.9h4.9V0h2.5v4.9h4.9z"/>
-                      </svg>
-                  </div>
-                  <div class="wrapper-social-span">
-                    <span class="social-name">
+                  </svg>
+                </div>
+                <div class="wrapper-social-span">
+                  <span class="social-name">
                     Google+
-                      </span>
-                    <span class="social-number">
+                  </span>
+                  <span class="social-number">
                     2,530
-                      </span>
-                  </div>
+                  </span>
                 </div>
               </div>
             </div>
-          </section>
-        </div>
-        <div class="row">
-          <section class="section">
-            <h2>New members</h2>
-            <div class="section-main">
-              <div class="section-main_list">
-                <div class="section-main_list_item">
-                  Lorem ipsum dolor
-                </div>
-                <div class="section-main_list_item">
-                  Lorem ipsum dolor
-                </div>
-                <div class="section-main_list_item">
-                  Lorem ipsum dolor
-                </div>
-                <div class="section-main_list_item">
-                  Lorem ipsum dolor
-                </div>
-              </div>
-            </div>
-          </section>
-          <section class="section">
-            <h2>Recent activity</h2>
-            <div class="section-main">
-              <div class="section-main_list">
-                <div class="section-main_list_item">
-                  Lorem ipsum dolor
-                </div>
-                <div class="section-main_list_item">
-                  Lorem ipsum dolor
-                </div>
-                <div class="section-main_list_item">
-                  Lorem ipsum dolor
-                </div>
-                <div class="section-main_list_item">
-                  Lorem ipsum dolor
-                </div>
-              </div>
-            </div>
-          </section>
-        </div>
-        <div class="row">
-          <section class="section">
-            <h2>Message user</h2>
-            <div class="section-main">
-              <form action="">
-                <input type="text">
-                <textarea name="" id=""></textarea>
-                <button value="SEND"></button>
-              </form>
-            </div>
-          </section>
-          <section class="section">
-            <h2>Settings</h2>
-            <div class="section-main">
-
-            </div>
-          </section>
-        </div>
+          </div>
+        </section>
       </div>
-    </main>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
-    <script type="text/javascript" src="app.js"></script>
-  </body>
+      <div class="row">
+        <section class="section" id="newmembers">
+          <h2 class="section_title">New members</h2>
+          <div class="section_main">
+            <div class="feedlist">
+              <div class="feedlist_item">
+                <img class="item_image" src="images/member-1.jpg">
+                <div class="item_info">
+                  <span class="item_info_h1">Lorem ipsum</span>
+                  <span class="item_info_h2"><a href='#' title="lorem@ipsum.com">lorem@ipsum.com</a></span>
+                </div>
+                <span class="item_right">10/5/15</span>
+              </div>
+              <div class="feedlist_item">
+                <img class="item_image" src="images/member-3.jpg">
+                <div class="item_info">
+                  <span class="item_info_h1">Lorem ipsum</span>
+                  <span class="item_info_h2"><a href='#' title="lorem@ipsum.com">lorem@ipsum.com</a></span>
+                </div>
+                <span class="item_right">10/4/15</span>
+              </div>
+              <div class="feedlist_item">
+                <img class="item_image" src="images/member-2.jpg">
+                <div class="item_info">
+                  <span class="item_info_h1">Lorem ipsum</span>
+                  <span class="item_info_h2"><a href='#' title="lorem@ipsum.com">lorem@ipsum.com</a></span>
+                </div>
+                <span class="item_right">10/3/15</span>
+              </div>
+              <div class="feedlist_item">
+                <img class="item_image" src="images/member-4.jpg">
+                <div class="item_info">
+                  <span class="item_info_h1">Lorem ipsum</span>
+                  <span class="item_info_h2"><a href='#' title="lorem@ipsum.com">lorem@ipsum.com</a></span>
+                </div>
+                <span class="item_right">10/2/15</span>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="section" id="recentactivity">
+          <h2 class="section_title">Recent activity</h2>
+          <div class="section_main">
+            <div class="feedlist">
+              <div class="feedlist_item">
+                <img class="item_image" src="images/member-1.jpg">
+                <div class="item_info">
+                  <span class="item_info_h1">Lorem ipsum commented on This Post</span>
+                  <span class="item_info_h2">2 hours ago</span>
+                </div>
+                <button class="item_right">
+                  <div class="itembutton">
+                    <div class="drawrightarrow"></div>
+                  </div>
+                </button>
+              </div>
+              <div class="feedlist_item">
+                <img class="item_image" src="images/member-3.jpg">
+                <div class="item_info">
+                  <span class="item_info_h1">Lorem ipsum commented on This Post</span>
+                  <span class="item_info_h2">3 hours ago</span>
+                </div>
+                <button class="item_right">
+                  <div class="itembutton">
+                    <div class="drawrightarrow"></div>
+                  </div>
+                </button>
+              </div>
+              <div class="feedlist_item">
+                <img class="item_image" src="images/member-2.jpg">
+                <div class="item_info">
+                  <span class="item_info_h1">Lorem ipsum commented on This Post</span>
+                  <span class="item_info_h2">4 hours ago</span>
+                </div>
+                <button class="item_right">
+                  <div class="itembutton">
+                    <div class="drawrightarrow"></div>
+                  </div>
+                </button>
+              </div>
+              <div class="feedlist_item">
+                <img class="item_image" src="images/member-4.jpg">
+                <div class="item_info">
+                  <span class="item_info_h1">Lorem ipsum commented on This Post</span>
+                  <span class="item_info_h2">5 hours ago</span>
+                </div>
+                <button class="item_right">
+                  <div class="itembutton">
+                    <div class="drawrightarrow"></div>
+                  </div>
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div class="row">
+        <section class="section">
+          <h2 class="section_title">Message user</h2>
+          <div class="section_main">
+            <form class="form" action="">
+              <label class="form_label" for="searchuser">Search for user</label>
+              <input class="form_input" type="search" placeholder="Search for user" id="searchuser">
+              <div class="form_input-autocomplete" data-for='searchuser'>
+                <ul>
+                  <li>Lorem ipsum</li>
+                </ul>
+              </div>
+              <label class="form_label" for="messageuser">Message for user</label>
+              <textarea class="form_textarea" placeholder="Message for user" id="messageuser"></textarea>
+              <button class="form_button">Send</button>
+            </form>
+          </div>
+        </section>
+        <section class="section">
+          <h2 class="section_title">Settings</h2>
+          <div class="section_main">
+            <div class="settings">
+              <div class="settings_list">
+                <div class="checkbox">
+                  <label class="checkbox_label" for="sendnotification">
+                    Send Email Notification
+                  </label>
+                  <input class="checkbox_input" type="checkbox" id="sendnotification" checked="checked">
+                  <button class="checkbox_button inputischecked" name='sendnotification'>
+                    <span class="checkbox_button_on">On</span>
+                    <span class="checkbox_button_off">Off</span>
+                    <span class="checkbox_button_circle"></span>
+                  </button>
+                </div>
+                <div class="checkbox">
+                  <label class="checkbox_label" for="settopublic">
+                    Set Profile to Public
+                  </label>
+                  <input class="checkbox_input" type="checkbox" id="settopublic" checked="checked">
+                  <button class="checkbox_button inputischecked" name='settopublic'>
+                    <span class="checkbox_button_on">On</span>
+                    <span class="checkbox_button_off">Off</span>
+                    <span class="checkbox_button_circle"></span>
+                  </button>
+                </div>
+              </div>
+              <label class="settings_label" for="selecttimezone">Select Timezone</label>
+              <div class="settings_select">
+                <select class="selectlist" id="selecttimezone">
+                  <option value="none">Select Timezone</option>
+                  <!-- option list from https://gist.github.com/nodesocket/3919205 -->
+                  <option value="-12:00">(GMT -12:00) Eniwetok, Kwajalein</option>
+                	<option value="-11:00">(GMT -11:00) Midway Island, Samoa</option>
+                	<option value="-10:00">(GMT -10:00) Hawaii</option>
+                	<option value="-09:50">(GMT -9:30) Taiohae</option>
+                	<option value="-09:00">(GMT -9:00) Alaska</option>
+                	<option value="-08:00">(GMT -8:00) Pacific Time (US &amp; Canada)</option>
+                	<option value="-07:00">(GMT -7:00) Mountain Time (US &amp; Canada)</option>
+                	<option value="-06:00">(GMT -6:00) Central Time (US &amp; Canada), Mexico City</option>
+                	<option value="-05:00">(GMT -5:00) Eastern Time (US &amp; Canada), Bogota, Lima</option>
+                	<option value="-04:50">(GMT -4:30) Caracas</option>
+                	<option value="-04:00">(GMT -4:00) Atlantic Time (Canada), Caracas, La Paz</option>
+                	<option value="-03:50">(GMT -3:30) Newfoundland</option>
+                	<option value="-03:00">(GMT -3:00) Brazil, Buenos Aires, Georgetown</option>
+                	<option value="-02:00">(GMT -2:00) Mid-Atlantic</option>
+                	<option value="-01:00">(GMT -1:00) Azores, Cape Verde Islands</option>
+                	<option value="+00:00">(GMT) Western Europe Time, London, Lisbon, Casablanca</option>
+                	<option value="+01:00">(GMT +1:00) Brussels, Copenhagen, Madrid, Paris</option>
+                	<option value="+02:00">(GMT +2:00) Kaliningrad, South Africa</option>
+                	<option value="+03:00">(GMT +3:00) Baghdad, Riyadh, Moscow, St. Petersburg</option>
+                	<option value="+03:50">(GMT +3:30) Tehran</option>
+                	<option value="+04:00">(GMT +4:00) Abu Dhabi, Muscat, Baku, Tbilisi</option>
+                	<option value="+04:50">(GMT +4:30) Kabul</option>
+                	<option value="+05:00">(GMT +5:00) Ekaterinburg, Islamabad, Karachi, Tashkent</option>
+                	<option value="+05:50">(GMT +5:30) Bombay, Calcutta, Madras, New Delhi</option>
+                	<option value="+05:75">(GMT +5:45) Kathmandu, Pokhara</option>
+                	<option value="+06:00">(GMT +6:00) Almaty, Dhaka, Colombo</option>
+                	<option value="+06:50">(GMT +6:30) Yangon, Mandalay</option>
+                	<option value="+07:00">(GMT +7:00) Bangkok, Hanoi, Jakarta</option>
+                	<option value="+08:00">(GMT +8:00) Beijing, Perth, Singapore, Hong Kong</option>
+                	<option value="+08:75">(GMT +8:45) Eucla</option>
+                	<option value="+09:00">(GMT +9:00) Tokyo, Seoul, Osaka, Sapporo, Yakutsk</option>
+                	<option value="+09:50">(GMT +9:30) Adelaide, Darwin</option>
+                	<option value="+10:00">(GMT +10:00) Eastern Australia, Guam, Vladivostok</option>
+                	<option value="+10:50">(GMT +10:30) Lord Howe Island</option>
+                	<option value="+11:00">(GMT +11:00) Magadan, Solomon Islands, New Caledonia</option>
+                	<option value="+11:50">(GMT +11:30) Norfolk Island</option>
+                	<option value="+12:00">(GMT +12:00) Auckland, Wellington, Fiji, Kamchatka</option>
+                	<option value="+12:75">(GMT +12:45) Chatham Islands</option>
+                	<option value="+13:00">(GMT +13:00) Apia, Nukualofa</option>
+                	<option value="+14:00">(GMT +14:00) Line Islands, Tokelau</option>
+                </select>
+                <button class="selectbutton">
+                  <div class="drawdownarrow"></div>
+                </button>
+              </div>
+              <button class="settings_button">Save</button>
+              <button class="settings_button" disabled>Cancel</button>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+  <script type="text/javascript" src="app.js"></script>
+</body>
+
 </html>

@@ -13,12 +13,9 @@
 		@content;
 	}
 }
-@mixin flexbox($wp: wrap, $ai: center) {
-	display: -webkit-box;
-	display: -moz-box;
-	display: -ms-flexbox;
-	display: -webkit-flex;
+@mixin flexbox($wp: wrap, $ai: center, $ac: center) {
 	display: flex;
+	align-content: $ac;
 	flex-wrap: $wp;
 	align-items: $ai;
 }
@@ -35,4 +32,19 @@
 @mixin m-r-l($r, $l: $r) {
 	margin-right: $r;
 	margin-left: $l;
+}
+
+@mixin separator($times: 1) {
+	&:not(:first-child) {
+		margin-top: $dft-text-height * $times;
+	}
+}
+
+@mixin drawarrow($deg: 45deg) {
+  display: block;
+  width: 15px;
+  height: 15px;
+  border-top: 2px solid $primary-color;
+  border-right: 2px solid $primary-color;
+  transform: rotate($deg);
 }

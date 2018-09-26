@@ -1,13 +1,6 @@
-// .inner-main {
-//   >div:nth-child(-n+4) {
-//     display: none !important;
-//   }
-// }
-
 @if variable-exists(google-font-url) {
   @import url($google-font-url);
 }
-
 
 * {
   box-sizing: border-box;
@@ -21,16 +14,40 @@
   outline-style: none;
 }
 
-ul, ol {
+a, label, button, select {
+  cursor: pointer;
+}
+
+ol,
+ul {
   list-style: none;
 }
 
+html {
+  font-size: 16px;
+  line-height:  1.125;
+}
+
 li {
-  display:inline;
+  display: inline;
 }
 
 button {
+  display: inline-block;
   background-color: transparent;
   border: none;
-  cursor: pointer;
+  position: relative;
+  &::after {
+    border-radius: inherit;
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+
+input[type='search']::-webkit-search-cancel-button {
+    -webkit-appearance: none;
 }
