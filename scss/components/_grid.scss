@@ -1,5 +1,5 @@
 .container {
-  min-width: 300px;
+  min-width: $min-width;
   font-family: $primaryFont;
   font-weight: $regular;
   color: $custom-gray-txt;
@@ -18,7 +18,7 @@
   color: $negative-color;
   background-color: $primary-color;
   grid-area: header;
-  @include flexbox();
+  @include flexbox($wp:nowrap);
   @include p-r-l($dft-padding);
 }
 

@@ -1,10 +1,13 @@
 .header {
   position: relative;
+  overflow: visible;
 }
 
 .logo {
   padding: $dft-padding;
   font-size: 1.4em;
+  position: absolute;
+  left: $dft-padding;
 
   a {
     text-decoration: none;
@@ -12,6 +15,7 @@
   }
   @include media($tablet) {
     font-size: 1.5em;
+      position: static;
   }
 }
 
@@ -73,13 +77,13 @@
 
 .notifications {
   display: none;
+  z-index: 1;
   font-size: 0.95em;
   border-radius: $b-radius/2;
   position: absolute;
   background-color: $negative-color;
   width: 400px;
   max-width: 100%;
-  z-index: 1;
   right: 0;
   box-shadow: 0 0 9px 0 $primary-color-dark;
   @include media($tablet) {
@@ -92,7 +96,6 @@
     background-color: $primary-color;
     width: 100%;
     border: 1px solid $negative-color;
-
     &:not(:first-child) {
       margin-top: -1px;
     }
@@ -101,10 +104,6 @@
       display: inline-block;
       margin-right: 10px;
       position: relative;
-    }
-
-    span {
-      padding-right: $dft-padding * 2;
     }
 
     button {
@@ -124,26 +123,34 @@
 
 .user {
   padding: $dft-padding;
-  img {
-    @extend %user-img;
-  }
+  width: $img-thumbnail + ($dft-padding * 2);
+  transition: width $dft-duration;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: $negative-color;
+  text-align: right;
   &:hover {
     position: absolute;
     right: $dft-padding;
     background-color: $primary-color;
-    @include media($tablet) {
-      position: initial;
+    max-width: 55vw;
+    width: 220px;
+  }
+  @include media($tablet) {
+    width: auto;
+    &:hover {
+      position: relative;
+      width: auto;
+      right: 0;
     }
   }
+  img {
+    @extend %user-img;
+    display: inline;
+  }
   @include e(name) {
-    color: $negative-color;
-    display: none;
+    display: inline;
     margin-left: 8px;
-    :hover > & {
-      display: inline;
-    }
-    @include media($tablet) {
-      display: inline;
-    }
   }
 }

@@ -1,13 +1,12 @@
 /////////////global constants//////////////////
-const getPlaceholderMessage = document.querySelector('.placeholder-message');
-// const getNotifications = document.querySelector('.notifications');
-// const getBellbtn = document.querySelector('#bellbtn');
 const getBody = document.querySelector("BODY");
+const getPlaceholderMessage = document.querySelector('.placeholder-message');
 const getSettingsList = document.querySelector('.settings_list');
 const getSelectTimeZone = document.querySelector('#selecttimezone');
 const styleId = 'rendered-height';
 const checboxNameSpace = 'checkboxSetting_';
 const selectNameSpace = 'selectSetting_';
+
 // data from https://randomuser.me/api/?results=30&nat=us&inc=name,email&seed=97303f7097649415
 const usersData = {"results":[{"name":{"title":"miss","first":"marilyn","last":"patterson"},"email":"marilyn.patterson@example.com"},{"name":{"title":"miss","first":"constance","last":"gregory"},"email":"constance.gregory@example.com"},{"name":{"title":"mr","first":"troy","last":"watson"},"email":"troy.watson@example.com"},{"name":{"title":"mr","first":"alan","last":"turner"},"email":"alan.turner@example.com"},{"name":{"title":"mr","first":"jerry","last":"hoffman"},"email":"jerry.hoffman@example.com"},{"name":{"title":"mrs","first":"kathryn","last":"morris"},"email":"kathryn.morris@example.com"},{"name":{"title":"ms","first":"marlene","last":"knight"},"email":"marlene.knight@example.com"},{"name":{"title":"mrs","first":"joy","last":"coleman"},"email":"joy.coleman@example.com"},{"name":{"title":"ms","first":"felicia","last":"myers"},"email":"felicia.myers@example.com"},{"name":{"title":"mrs","first":"lucy","last":"lewis"},"email":"lucy.lewis@example.com"},{"name":{"title":"mr","first":"connor","last":"patterson"},"email":"connor.patterson@example.com"},{"name":{"title":"mr","first":"austin","last":"cox"},"email":"austin.cox@example.com"},{"name":{"title":"miss","first":"teresa","last":"lambert"},"email":"teresa.lambert@example.com"},{"name":{"title":"mrs","first":"melissa","last":"craig"},"email":"melissa.craig@example.com"},{"name":{"title":"mr","first":"franklin","last":"murray"},"email":"franklin.murray@example.com"},{"name":{"title":"ms","first":"isobel","last":"lawrence"},"email":"isobel.lawrence@example.com"},{"name":{"title":"ms","first":"alexis","last":"rivera"},"email":"alexis.rivera@example.com"},{"name":{"title":"mrs","first":"josephine","last":"ford"},"email":"josephine.ford@example.com"},{"name":{"title":"mrs","first":"addison","last":"ford"},"email":"addison.ford@example.com"},{"name":{"title":"mr","first":"russell","last":"garza"},"email":"russell.garza@example.com"},{"name":{"title":"miss","first":"charlene","last":"lowe"},"email":"charlene.lowe@example.com"},{"name":{"title":"mrs","first":"bobbie","last":"webb"},"email":"bobbie.webb@example.com"},{"name":{"title":"miss","first":"arlene","last":"west"},"email":"arlene.west@example.com"},{"name":{"title":"ms","first":"terry","last":"hicks"},"email":"terry.hicks@example.com"},{"name":{"title":"miss","first":"gertrude","last":"murray"},"email":"gertrude.murray@example.com"},{"name":{"title":"mr","first":"george","last":"sanders"},"email":"george.sanders@example.com"},{"name":{"title":"mr","first":"theodore","last":"kelley"},"email":"theodore.kelley@example.com"},{"name":{"title":"miss","first":"jennie","last":"lucas"},"email":"jennie.lucas@example.com"},{"name":{"title":"mr","first":"howard","last":"castillo"},"email":"howard.castillo@example.com"},{"name":{"title":"mr","first":"steve","last":"alvarez"},"email":"steve.alvarez@example.com"}],"info":{"seed":"97303f7097649415","results":30,"page":1,"version":"1.2"}};
 ///////////end global constants/////////////////
@@ -22,8 +21,10 @@ function populateNames(data, elemId, placeholder) {
       const firstName = data.results[i].name.first.replace(/\b\w/g, l => l.toUpperCase());
       const lastName = data.results[i].name.last.replace(/\b\w/g, l => l.toUpperCase());
       section.innerHTML = section.innerHTML.replace(placeholder, firstName + ' ' + lastName);
+      section.innerHTML = section.innerHTML.replace(placeholder, firstName + ' ' + lastName);
     }
 }
+
 function populateEmails(data, elemId, placeholder) {
   const section = document.getElementById(elemId);
   for(let i=0;section.innerHTML.includes(placeholder);i++) {
@@ -34,8 +35,6 @@ function populateEmails(data, elemId, placeholder) {
 }
 
 
-
-// const getColor = (element, property) => window.getComputedStyle(element).getPropertyValue(property);
 function getColor(className) {
   let result = '';
   const newDiv = document.createElement("div");
@@ -50,6 +49,7 @@ function getColor(className) {
 
 // in order for the transiction to take effect
 function internalStyleHeight(styleElem, targetElem) {
+
   targetElem.style.height = 'auto';
   styleElem.textContent = `
   .inner-html-height {
@@ -60,37 +60,21 @@ function internalStyleHeight(styleElem, targetElem) {
   targetElem.style.height = '';
 }
 
-// close notification panel if the user clicks outsite it and outside the bell. To be called in an event listener.
-function hideNotifications(e) {
-  if (e.target.parentNode.className !== 'notification') {
-    getBody.removeEventListener('click', hideNotifications, true);
-    getNotifications.style.display = 'none';
-    getBellbtn.querySelector('.drawuparrow').style.display = 'none';
-  }
-}
-
-// To be called in an event listener.
-function showNotifications(e) {
-    getNotifications.style.display = "block";
-    getBellbtn.querySelector('.drawuparrow').style.display = 'block';
-    getBody.addEventListener('click', hideNotifications, true);
-}
-
 function addNotifications(bellId, panelId) {
   const bell = document.getElementById(bellId);
   const panel = document.getElementById(panelId);
-  const linkarrow = bell.querySelector('div:last-child');
+  const linkarrow = bell.querySelector('span:last-child');
   let firstClick = true;
 
   function setDisplay(value) {
     panel.style.display = value;
     linkarrow.style.display = value;
-  };
+  }
 
   function showPanel(e) {
     if(firstClick) {
       bell.removeEventListener('click', showPanel);
-      setDisplay('block')
+      setDisplay('block');
       window.addEventListener('mousedown', hidePanel);
       panel.addEventListener('click', closeNotification);
     } else {
@@ -100,7 +84,7 @@ function addNotifications(bellId, panelId) {
 
   function hidePanel(e) {
     if(!panel.contains(e.target)) {
-      if(bell.contains(e.target)) { firstClick = false };
+      if(bell.contains(e.target)) firstClick = false;
       setDisplay('none');
       window.removeEventListener('mousedown', hidePanel);
       bell.addEventListener('click', showPanel);
@@ -115,17 +99,15 @@ function addNotifications(bellId, panelId) {
         setDisplay('none');
         window.removeEventListener('mousedown', hidePanel);
         do {
-          bell.removeChild(bell.querySelector('div'));
+          bell.removeChild(bell.querySelector('span'));
         } while (bell.children.length > 1);
       }
     }
   }
 
   bell.addEventListener('click', showPanel);
+
 }
-
-
-addNotifications('bellbtn', 'notificationpanel');
 
 function checkBoxToggle(id) {
   const checkBtn = document.querySelector(`[name='${id}']`);
@@ -173,7 +155,7 @@ function addAutocomplete(id,data) {
     return resultArray.sort();
   })();
   autoListUl.innerHTML = fullNameLis.join('');
-  textInput.addEventListener('focus', (e) => {
+  textInput.addEventListener('focus', e => {
     autoList.style.display = 'block';
     window.addEventListener('mousedown', function closeListOnMouseDown(e) {
       if (e.target != textInput && e.target != autoListUl) {
@@ -219,6 +201,7 @@ window.addEventListener('load', () => {
   internalStyleHeight(styleTag, getPlaceholderMessage);
   document.querySelector('head').appendChild(styleTag);
   syncLocalStorage();
+  addNotifications('bellbtn', 'notificationpanel');
   populateNames(usersData, 'newmembers', 'Lorem ipsum');
   populateEmails(usersData, 'newmembers', 'lorem@ipsum.com');
   populateNames(usersData, 'recentactivity', 'Lorem ipsum');
@@ -227,25 +210,8 @@ window.addEventListener('load', () => {
 
 window.addEventListener('resize', () => {
   getPlaceholderMessage.style.height = 'auto';
-  const styleTagById = document.getElementById(styleId);
-  internalStyleHeight(styleTagById, getPlaceholderMessage);
-
+  internalStyleHeight(document.getElementById(styleId), getPlaceholderMessage);
 });
-
-// getBellbtn.addEventListener('click', showNotifications);
-//
-// getNotifications.addEventListener('click', (e) => {
-//   if (e.target.tagName == 'BUTTON') {
-//     getNotifications.removeChild(e.target.parentNode);
-//     if (getNotifications.children.length == 0) {
-//       getBody.removeEventListener('click', hideNotifications, true);
-//       getNotifications.style.display = "none";
-//       getBellbtn.querySelector('.drawcircle').style.display = 'none';
-//       getBellbtn.removeEventListener('click', showNotifications);
-//       getBellbtn.querySelector('.drawuparrow').style.display = 'none';
-//     }
-//   }
-// });
 
 getPlaceholderMessage.addEventListener('click', e => e.target.tagName == 'BUTTON' && getPlaceholderMessage.classList.add('shrink'));
 

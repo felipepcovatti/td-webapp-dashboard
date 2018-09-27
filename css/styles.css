@@ -484,6 +484,9 @@ button::after {
   top: 0;
   left: 0;
 }
+button span {
+  display: block;
+}
 
 input[type=search]::-webkit-search-cancel-button {
   -webkit-appearance: none;
@@ -513,7 +516,7 @@ input[type=search]::-webkit-search-cancel-button {
   grid-area: header;
   display: flex;
   align-content: center;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-items: center;
   padding-right: 12px;
   padding-left: 12px;
@@ -530,11 +533,14 @@ input[type=search]::-webkit-search-cancel-button {
 
 .header {
   position: relative;
+  overflow: visible;
 }
 
 .logo {
   padding: 12px;
   font-size: 1.4em;
+  position: absolute;
+  left: 12px;
 }
 .logo a {
   text-decoration: none;
@@ -543,6 +549,7 @@ input[type=search]::-webkit-search-cancel-button {
 @media (min-width: 768px) {
   .logo {
     font-size: 1.5em;
+    position: static;
   }
 }
 
@@ -597,13 +604,13 @@ input[type=search]::-webkit-search-cancel-button {
 
 .notifications {
   display: none;
+  z-index: 1;
   font-size: 0.95em;
   border-radius: 2.5px;
   position: absolute;
   background-color: white;
   width: 400px;
   max-width: 100%;
-  z-index: 1;
   right: 0;
   box-shadow: 0 0 9px 0 #4D4C72;
 }
@@ -630,9 +637,6 @@ input[type=search]::-webkit-search-cancel-button {
   margin-right: 10px;
   position: relative;
 }
-.notifications > div span {
-  padding-right: 24px;
-}
 .notifications > div button {
   padding: 12px;
   position: absolute;
@@ -649,29 +653,37 @@ input[type=search]::-webkit-search-cancel-button {
 
 .user {
   padding: 12px;
+  width: 59px;
+  transition: width 0.3s;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: white;
+  text-align: right;
 }
 .user:hover {
   position: absolute;
   right: 12px;
   background-color: #7477BF;
+  max-width: 55vw;
+  width: 220px;
 }
 @media (min-width: 768px) {
+  .user {
+    width: auto;
+  }
   .user:hover {
-    position: initial;
+    position: relative;
+    width: auto;
+    right: 0;
   }
 }
-.user_name {
-  color: white;
-  display: none;
-  margin-left: 8px;
-}
-:hover > .user_name {
+.user img {
   display: inline;
 }
-@media (min-width: 768px) {
-  .user_name {
-    display: inline;
-  }
+.user_name {
+  display: inline;
+  margin-left: 8px;
 }
 
 .navlist {
@@ -825,11 +837,11 @@ input[type=search]::-webkit-search-cancel-button {
     padding-right: calc(6vw - 36px);
   }
 }
-.message-alert span {
+.message-alert > span {
   flex-basis: 100%;
   padding-right: 56px;
 }
-.message-alert span b {
+.message-alert > span b {
   padding-right: 12px;
 }
 .message-alert .alert-close {

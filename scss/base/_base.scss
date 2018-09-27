@@ -46,6 +46,9 @@ button {
     top: 0;
     left: 0;
   }
+  span {
+    display: block;
+  }
 }
 
 input[type='search']::-webkit-search-cancel-button {

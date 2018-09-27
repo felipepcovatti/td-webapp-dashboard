@@ -101,7 +101,7 @@
     padding-right: calc(#{$small-vw-portion} - #{$main-padding});
   }
 
-  span {
+  > span {
     flex-basis: 100%;
     padding-right: $dft-padding + $dft-font-size + ($dft-box-padding * 2);
 

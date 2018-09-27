@@ -1,55 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <title>Webapp Dashboard</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="css/styles.css" rel="stylesheet">
 </head>
-
 <body class="container">
   <header class="header">
     <div class="logo">
-      <a href="#"><b>Your</b>App&trade;</a>
+      <a href="index.html"><b>Your</b>App&trade;</a>
     </div>
     <div class="notify">
-      <button id="bellbtn"><img src="icons/icon-bell.svg" alt=""><div class="drawcircle"></div><div class="drawuparrow"></div></button>
+      <button id="bellbtn"><img src="icons/icon-bell.svg" alt="Bell icon"><span class="drawcircle"></span><span class="drawuparrow"></span></button>
       <div class="notifications" id="notificationpanel">
         <div class="notification">
-          <div class="drawcircle"></div>
+          <span class="drawcircle"></span>
           <span>This is the first lorem ipsum notification</span>
-          <button class="notification-close">
-            <div class="drawclose">
-              <div class="drawclose_line1"></div>
-              <div class="drawclose_line2"></div>
-            </div>
+          <button>
+            <span class="drawclose">
+              <span class="drawclose_line1"></span>
+              <span class="drawclose_line2"></span>
+            </span>
           </button>
         </div>
         <div class="notification">
-          <div class="drawcircle"></div>
+          <span class="drawcircle"></span>
           <span>This is the second lorem ipsum notification</span>
           <button>
-            <div class="drawclose">
-              <div class="drawclose_line1"></div>
-              <div class="drawclose_line2"></div>
-            </div>
+            <span class="drawclose">
+              <span class="drawclose_line1"></span>
+              <span class="drawclose_line2"></span>
+            </span>
           </button>
         </div>
       </div>
     </div>
     <div class="vr"></div>
     <button class="user" id="userbtn">
-      <img src="images/member-2.jpg" alt="">
+      <img src="images/member-2.jpg" alt="Profile picture of Troy Watson">
       <span class="user_name">Troy Watson</span>
     </button>
   </header>
   <nav class="nav" role="navigation">
     <ul class="navlist">
-      <li class="navlist_item-active"><a href="#"><img src="icons/icon-dashboard.svg" alt=""></a></li>
-      <li class="navlist_item"><a href="#"><img src="icons/icon-members.svg" alt=""></a></li>
-      <li class="navlist_item"><a href="#"><img src="icons/icon-visits.svg" alt=""></a></li>
-      <li class="navlist_item"><a href="#"><img src="icons/icon-settings.svg" alt=""></a></li>
+      <li class="navlist_item-active"><a href="#"><img src="icons/icon-dashboard.svg" alt="Dashboard icon"></a></li>
+      <li class="navlist_item"><a href="#"><img src="icons/icon-members.svg" alt="Members icon"></a></li>
+      <li class="navlist_item"><a href="#"><img src="icons/icon-visits.svg" alt="Visits icon"></a></li>
+      <li class="navlist_item"><a href="#"><img src="icons/icon-settings.svg" alt="Settings icon"></a></li>
     </ul>
   </nav>
   <main class="main">
@@ -58,14 +56,14 @@
       <div class="search-bar">
         <input type="search" placeholder="Search">
         <button>
-          <div class="search-bar_icon">
-            <div class="drawsearch">
-              <div class="drawsearch_handle">
-              </div>
-              <div class="drawsearch_circle">
-              </div>
-            </div>
-          </div>
+          <span class="search-bar_icon">
+            <span class="drawsearch">
+              <span class="drawsearch_handle">
+              </span>
+              <span class="drawsearch_circle">
+              </span>
+            </span>
+          </span>
         </button>
       </div>
     </div>
@@ -74,10 +72,10 @@
         <div class="message-alert">
           <span><b>Alert</b>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto accusantium aliquid tenetur rem</span>
           <button class="alert-close">
-            <div class="drawclose">
-              <div class="drawclose_line1"></div>
-              <div class="drawclose_line2"></div>
-            </div>
+            <span class="drawclose">
+              <span class="drawclose_line1"></span>
+              <span class="drawclose_line2"></span>
+            </span>
           </button>
         </div>
       </div>
@@ -171,7 +169,7 @@
           <div class="section_main">
             <div class="feedlist">
               <div class="feedlist_item">
-                <img class="item_image" src="images/member-1.jpg">
+                <img class="item_image" src="images/member-1.jpg" alt="Profile picture of Lorem ipsum">
                 <div class="item_info">
                   <span class="item_info_h1">Lorem ipsum</span>
                   <span class="item_info_h2"><a href='#' title="lorem@ipsum.com">lorem@ipsum.com</a></span>
@@ -179,7 +177,7 @@
                 <span class="item_right">10/5/15</span>
               </div>
               <div class="feedlist_item">
-                <img class="item_image" src="images/member-3.jpg">
+                <img class="item_image" src="images/member-3.jpg" alt="Profile picture of Lorem ipsum">
                 <div class="item_info">
                   <span class="item_info_h1">Lorem ipsum</span>
                   <span class="item_info_h2"><a href='#' title="lorem@ipsum.com">lorem@ipsum.com</a></span>
@@ -187,7 +185,7 @@
                 <span class="item_right">10/4/15</span>
               </div>
               <div class="feedlist_item">
-                <img class="item_image" src="images/member-2.jpg">
+                <img class="item_image" src="images/member-2.jpg" alt="Profile picture of Lorem ipsum">
                 <div class="item_info">
                   <span class="item_info_h1">Lorem ipsum</span>
                   <span class="item_info_h2"><a href='#' title="lorem@ipsum.com">lorem@ipsum.com</a></span>
@@ -195,7 +193,7 @@
                 <span class="item_right">10/3/15</span>
               </div>
               <div class="feedlist_item">
-                <img class="item_image" src="images/member-4.jpg">
+                <img class="item_image" src="images/member-4.jpg" alt="Profile picture of Lorem ipsum">
                 <div class="item_info">
                   <span class="item_info_h1">Lorem ipsum</span>
                   <span class="item_info_h2"><a href='#' title="lorem@ipsum.com">lorem@ipsum.com</a></span>
@@ -210,51 +208,51 @@
           <div class="section_main">
             <div class="feedlist">
               <div class="feedlist_item">
-                <img class="item_image" src="images/member-1.jpg">
+                <img class="item_image" src="images/member-1.jpg" alt="Profile picture of Lorem ipsum">
                 <div class="item_info">
                   <span class="item_info_h1">Lorem ipsum commented on This Post</span>
                   <span class="item_info_h2">2 hours ago</span>
                 </div>
                 <button class="item_right">
-                  <div class="itembutton">
-                    <div class="drawrightarrow"></div>
-                  </div>
+                  <span class="itembutton">
+                    <span class="drawrightarrow"></span>
+                  </span>
                 </button>
               </div>
               <div class="feedlist_item">
-                <img class="item_image" src="images/member-3.jpg">
+                <img class="item_image" src="images/member-3.jpg" alt="Profile picture of Lorem ipsum">
                 <div class="item_info">
                   <span class="item_info_h1">Lorem ipsum commented on This Post</span>
                   <span class="item_info_h2">3 hours ago</span>
                 </div>
                 <button class="item_right">
-                  <div class="itembutton">
-                    <div class="drawrightarrow"></div>
-                  </div>
+                  <span class="itembutton">
+                    <span class="drawrightarrow"></span>
+                  </span>
                 </button>
               </div>
               <div class="feedlist_item">
-                <img class="item_image" src="images/member-2.jpg">
+                <img class="item_image" src="images/member-2.jpg" alt="Profile picture of Lorem ipsum">
                 <div class="item_info">
                   <span class="item_info_h1">Lorem ipsum commented on This Post</span>
                   <span class="item_info_h2">4 hours ago</span>
                 </div>
                 <button class="item_right">
-                  <div class="itembutton">
-                    <div class="drawrightarrow"></div>
-                  </div>
+                  <span class="itembutton">
+                    <span class="drawrightarrow"></span>
+                  </span>
                 </button>
               </div>
               <div class="feedlist_item">
-                <img class="item_image" src="images/member-4.jpg">
+                <img class="item_image" src="images/member-4.jpg" alt="Profile picture of Lorem ipsum">
                 <div class="item_info">
                   <span class="item_info_h1">Lorem ipsum commented on This Post</span>
                   <span class="item_info_h2">5 hours ago</span>
                 </div>
                 <button class="item_right">
-                  <div class="itembutton">
-                    <div class="drawrightarrow"></div>
-                  </div>
+                  <span class="itembutton">
+                    <span class="drawrightarrow"></span>
+                  </span>
                 </button>
               </div>
             </div>
@@ -265,7 +263,7 @@
         <section class="section">
           <h2 class="section_title">Message user</h2>
           <div class="section_main">
-            <form class="form" action="">
+            <form class="form">
               <label class="form_label" for="searchuser">Search for user</label>
               <input class="form_input" type="search" placeholder="Search for user" id="searchuser">
               <div class="form_input-autocomplete" data-for='searchuser'>
@@ -354,7 +352,7 @@
                 	<option value="+14:00">(GMT +14:00) Line Islands, Tokelau</option>
                 </select>
                 <button class="selectbutton">
-                  <div class="drawdownarrow"></div>
+                  <span class="drawdownarrow"></span>
                 </button>
               </div>
               <button class="settings_button">Save</button>
@@ -368,5 +366,4 @@
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
   <script type="text/javascript" src="app.js"></script>
 </body>
-
 </html>
