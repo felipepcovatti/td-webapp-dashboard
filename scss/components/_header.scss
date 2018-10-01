@@ -92,7 +92,7 @@
 
   > div {
     @include flexbox($wp:nowrap);
-    padding: $dft-padding * 2 $dft-padding;
+    padding: ($dft-padding * 2) (($dft-padding * 2) + $dft-font-size) ($dft-padding * 2) $dft-padding;
     background-color: $primary-color;
     width: 100%;
     border: 1px solid $negative-color;

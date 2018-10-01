@@ -105,16 +105,14 @@
     flex-basis: 100%;
     padding-right: $dft-padding + $dft-font-size + ($dft-box-padding * 2);
 
-    b {
-      padding-right: $dft-padding;
-    }
+    @extend %b-space;
+
   }
 
-  .alert-close {
+  button {
     position: absolute;
     top: 1px;
     padding: $dft-box-padding;
     border-radius: $b-radius;
-
   }
 }

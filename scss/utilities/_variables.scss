@@ -24,6 +24,7 @@ $dft-nav-padding: 12px;
 $dft-padding: 12px;
 $dft-box-padding: 14px;
 $dft-font-size: 16px;
+$smal-font-size: $dft-font-size * .85;
 $dft-line-height: 1.125;
 $dft-text-height: $dft-font-size * $dft-line-height;
 $img-thumbnail: 35px;
@@ -55,6 +56,7 @@ $line-color: #bfbfbf;
 $custom-gray-txt: #797979;
 $custom-grey-dark: darken($custom-gray-txt, 20%);
 $custom-gray-bg: #f2f2f2;
+$error-color: #e4757a;
 
 // for js
 
@@ -70,12 +72,6 @@ $custom-gray-bg: #f2f2f2;
 .highlight-color {
   color: $highlight-color;
 }
-
-$theme-type-colors: (
-  default: #51ddfc,
-  success: #63cc82,
-  error: #e4757a,
-  warning: #fd7856,
-  info: #927bc1,
-);
-$column-colors: #2b57f5, #297360, #deb2ee, #7ee6fd, #88d9a0, #3fabca, #ec9fa3, #fd9f85, #f51496, #00ff38, #728500, #80e8d1;
+.custom-gray-bg {
+  color: $custom-gray-bg;
+}

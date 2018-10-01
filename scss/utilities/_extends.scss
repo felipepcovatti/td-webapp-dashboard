@@ -78,3 +78,9 @@
   min-width: $img-thumbnail;
   vertical-align: middle;
 }
+
+%b-space {
+  b {
+    padding-right: $dft-box-padding;
+  }
+}

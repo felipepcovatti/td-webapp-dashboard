@@ -25,6 +25,7 @@
   }
   @include e(main) {
     width: 100%;
+    position: relative;
   }
 }
 
@@ -156,7 +157,7 @@
     margin-left: 8px;
     @include e(h1) {}
     @include e(h2) {
-      font-size: 0.85em;
+      font-size: $smal-font-size;
       display: block;
       margin-top: 2px;
 
@@ -167,7 +168,6 @@
         overflow: hidden;
         max-width: 55vw;
         display: block;
-
       }
     }
   }
@@ -181,19 +181,51 @@
   padding: $dft-padding/2;
 }
 
-.form {
-  @include e(button) {
-    @extend %btn;
+.feedback {
+  position: absolute;
+  opacity: 0;
+  font-size: $dft-font-size;
+  line-height: $dft-line-height;
+  background-color: red;
+  width: 100%;
+  border-radius: $b-radius;
+  overflow: hidden;
+  color: $negative-color;
+  margin-bottom: $dft-text-height;
+  padding: $dft-padding ($dft-padding + $dft-font-size + ($dft-padding * 2)) $dft-padding $dft-padding;
+
+  & + * {
+    transition-duration: $dft-duration;
+    transition-property: margin-top;
   }
+
+  &.success {
+    opacity: 1;
+    background-color: $highlight-color;
+  }
+
+  > span {
+    @extend %b-space;
+  }
+
+  button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: $dft-padding;
+    border-radius: $b-radius;
+  }
+}
+
+
+.form {
+  position: relative;
+  background-color: $negative-color;
   @include e(label) {
     display: none;
   }
   @include e(input) {
     @extend %input;
-
-    &:focus + [data-for] {
-      // display: block;
-    }
     @include m(autocomplete) {
       position: relative;
       width: 100%;
@@ -219,11 +251,11 @@
           color: $custom-grey-dark;
           @include p-r-l($dft-padding);
 
-          &:hover {
-            background-color: $primary-color-alpha;
-          }
+          // &:hover {
+          //   background-color: $primary-color-alpha;
+          // }
 
-          &:first-child:not(:hover) {
+          &#selecteduser {
             background-color: $primary-color;
             color: $negative-color;
           }
@@ -235,6 +267,31 @@
     @extend %input;
     resize: none;
     height: ($dft-font-size + ($dft-padding * 2)) * 3;
+  }
+  @include e(button) {
+    @extend %btn;
+  }
+}
+
+.formtip {
+  background-color: $error-color;
+  padding: $dft-padding/1.5;
+  position: absolute;
+  right: 0;
+  font-size: $smal-font-size;
+  color: $negative-color;
+  border-radius: $b-radius;
+  transform: translateY(-136%);
+
+  &::after {
+    content: '';
+    position: absolute;
+    @include drawarrow(135deg);
+    right: $dft-padding;
+    border: none;
+    background-color: $error-color;
+    bottom: -7px;
+    border-bottom-left-radius: 100%;
   }
 }
 

@@ -71,7 +71,7 @@
       <div class="placeholder-message">
         <div class="message-alert">
           <span><b>Alert</b>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto accusantium aliquid tenetur rem</span>
-          <button class="alert-close">
+          <button>
             <span class="drawclose">
               <span class="drawclose_line1"></span>
               <span class="drawclose_line2"></span>
@@ -97,7 +97,7 @@
       </div>
       <div class="row">
         <section class="section">
-          <h2 class="section_title">Daily trafic</h2>
+          <h2 class="section_title">Daily traffic</h2>
           <div class="section_main">
             <canvas class="canvas" id="daily-traffic"></canvas>
           </div>
@@ -111,7 +111,7 @@
       </div>
       <div class="row">
         <section class="section">
-          <h2 class="section_title">Sosial stats</h2>
+          <h2 class="section_title">Social stats</h2>
           <div class="section_main">
             <div class="group">
               <div class="group_item">
@@ -122,7 +122,7 @@
                 </div>
                 <div class="wrapper-social-spans">
                   <span class="social-name">
-                      Twhiter
+                      Twitter
                       </span>
                   <span class="social-number">
                       10,345
@@ -263,7 +263,15 @@
         <section class="section">
           <h2 class="section_title">Message user</h2>
           <div class="section_main">
-            <form class="form">
+            <div class="feedback" data-for='messageuserform'>
+              <button>
+                <span class="drawclose">
+                  <span class="drawclose_line1"></span>
+                  <span class="drawclose_line2"></span>
+                </span>
+              </button>
+            </div>
+            <form class="form" id="messageuserform" autocomplete="off">
               <label class="form_label" for="searchuser">Search for user</label>
               <input class="form_input" type="search" placeholder="Search for user" id="searchuser">
               <div class="form_input-autocomplete" data-for='searchuser'>
@@ -273,7 +281,7 @@
               </div>
               <label class="form_label" for="messageuser">Message for user</label>
               <textarea class="form_textarea" placeholder="Message for user" id="messageuser"></textarea>
-              <button class="form_button">Send</button>
+              <button class="form_button" type="submit">Send</button>
             </form>
           </div>
         </section>
