@@ -33,18 +33,18 @@ function getColor(className) {
 }
 
 function populateNames(data, elemId, placeholder) {
-    const section = document.getElementById(elemId);
-    for(let i=0;section.innerHTML.includes(placeholder);i++) {
-      const firstName = data.results[i].name.first.replace(/\b\w/g, l => l.toUpperCase());
-      const lastName = data.results[i].name.last.replace(/\b\w/g, l => l.toUpperCase());
-      section.innerHTML = section.innerHTML.replace(placeholder, firstName + ' ' + lastName);
-      section.innerHTML = section.innerHTML.replace(placeholder, firstName + ' ' + lastName);
-    }
+  const section = document.getElementById(elemId);
+  for (let i = 0; section.innerHTML.includes(placeholder); i++) {
+    const firstName = data.results[i].name.first.replace(/\b\w/g, l => l.toUpperCase());
+    const lastName = data.results[i].name.last.replace(/\b\w/g, l => l.toUpperCase());
+    section.innerHTML = section.innerHTML.replace(placeholder, firstName + ' ' + lastName);
+    section.innerHTML = section.innerHTML.replace(placeholder, firstName + ' ' + lastName);
+  }
 }
 
 function populateEmails(data, elemId, placeholder) {
   const section = document.getElementById(elemId);
-  for(let i=0;section.innerHTML.includes(placeholder);i++) {
+  for (let i = 0; section.innerHTML.includes(placeholder); i++) {
     const email = data.results[i].email;
     section.innerHTML = section.innerHTML.replace(placeholder, email);
     section.innerHTML = section.innerHTML.replace(placeholder, email);
@@ -54,7 +54,7 @@ function populateEmails(data, elemId, placeholder) {
 // in order for the transiction to take effect
 function internalStyleHeight(styleElemId, targetElem) {
   let styleElem = document.getElementById(styleElemId);
-  if(!styleElem) {
+  if (!styleElem) {
     const newStyleElem = document.createElement('style');
     newStyleElem.type = 'text/css';
     newStyleElem.id = styleElemId;
@@ -83,7 +83,7 @@ function addNotifications(bellId, panelId) {
   }
 
   function showPanel(e) {
-    if(firstClick) {
+    if (firstClick) {
       bell.removeEventListener('click', showPanel);
       setDisplay('block');
       window.addEventListener('mousedown', hidePanel);
@@ -94,8 +94,8 @@ function addNotifications(bellId, panelId) {
   }
 
   function hidePanel(e) {
-    if(!panel.contains(e.target)) {
-      if(bell.contains(e.target)) firstClick = false;
+    if (!panel.contains(e.target)) {
+      if (bell.contains(e.target)) firstClick = false;
       setDisplay('none');
       window.removeEventListener('mousedown', hidePanel);
       bell.addEventListener('click', showPanel);
@@ -104,9 +104,9 @@ function addNotifications(bellId, panelId) {
   }
 
   function closeNotification(e) {
-    if(e.target.tagName == 'BUTTON') {
+    if (e.target.tagName == 'BUTTON') {
       panel.removeChild(e.target.parentNode);
-      if(panel.children.length == 0) {
+      if (panel.children.length == 0) {
         setDisplay('none');
         window.removeEventListener('mousedown', hidePanel);
         do {
@@ -172,14 +172,14 @@ function handleMessageUser(form, data) {
 
   function filterOptions() {
     let filteredLis = [];
-    if(input.value) {
+    if (input.value) {
       filteredLis = fullNameLis.filter((fullName) => {
         const upperName = fullName.toUpperCase();
         const upperValue = input.value.toUpperCase();
         return upperName.startsWith(`<LI>${upperValue}`);
       });
       autoListUl.innerHTML = filteredLis.join('');
-      if(autoListUl.children[0]) autoListUl.children[0].id = selectedLiId;
+      if (autoListUl.children[0]) autoListUl.children[0].id = selectedLiId;
     } else {
       autoListUl.innerHTML = fullNameLis.join('');
     }
@@ -188,7 +188,7 @@ function handleMessageUser(form, data) {
 
   function closeAndGoToNext(selected = true) {
     autoList.style.display = 'none';
-    if(selected) input.style.backgroundColor = customGrayBg;
+    if (selected) input.style.backgroundColor = customGrayBg;
     autoList.nextElementSibling.focus();
   }
 
@@ -208,7 +208,7 @@ function handleMessageUser(form, data) {
             input.value = autoListUl.children[0].textContent;
           }
         } else if (e.target.tagName === 'LI') {
-            window.addEventListener('mouseup', function closeListOnMouseUp() {
+          window.addEventListener('mouseup', function closeListOnMouseUp() {
             window.removeEventListener('mouseup', closeListOnMouseUp);
             input.value = e.target.textContent;
             closeAndGoToNext();
@@ -217,67 +217,79 @@ function handleMessageUser(form, data) {
       }
     });
   });
-  input.addEventListener('keyup', e=>{
-    if(e.keyCode != 13 && e.keyCode != 9 && e.keyCode != 40 && e.keyCode != 38) {
+  input.addEventListener('keyup', e => {
+    if (e.keyCode != 13 && e.keyCode != 9 && e.keyCode != 40 && e.keyCode != 38) {
       filterOptions();
     }
   });
   input.addEventListener('keydown', e => {
 
-    if(autoListUl.children[0]) {
+    if (autoListUl.children[0]) {
       const currentLi = autoListUl.querySelector('#' + selectedLiId);
       switch (e.keyCode) {
         case 13: //enter
         case 9: //tab
-        e.preventDefault();
-        if(currentLi) {
-          input.value = currentLi.textContent;
-          closeAndGoToNext();
-        } else {
-          closeAndGoToNext(false);
-        }
+          e.preventDefault();
+          if (currentLi) {
+            input.value = currentLi.textContent;
+            closeAndGoToNext();
+          } else {
+            closeAndGoToNext(false);
+          }
 
           break;
         case 40: //arrowdown
-        e.preventDefault();
-        if(currentLi) {
-          const nextLi = currentLi.nextElementSibling;
-          if(nextLi) {
-            currentLi.removeAttribute('id');
-            nextLi.id = selectedLiId;
-            if((nextLi.offsetTop + nextLi.offsetHeight) >  autoListUl.offsetHeight + autoListUl.scrollTop) {
-              autoListUl.scrollTop = nextLi.offsetTop - (autoListUl.offsetHeight - nextLi.offsetHeight);
+          e.preventDefault();
+          if (currentLi) {
+            const nextLi = currentLi.nextElementSibling;
+            if (nextLi) {
+              currentLi.removeAttribute('id');
+              nextLi.id = selectedLiId;
+              if ((nextLi.offsetTop + nextLi.offsetHeight) > autoListUl.offsetHeight + autoListUl.scrollTop) {
+                autoListUl.scrollTop = nextLi.offsetTop - (autoListUl.offsetHeight - nextLi.offsetHeight);
+              } else if (nextLi.offsetTop < autoListUl.scrollTop) {
+                autoListUl.scrollTop = nextLi.offsetTop;
+              }
             }
+          } else {
+            autoListUl.children[0].id = selectedLiId;
+            autoListUl.scrollTop = 0;
           }
-        } else {
-          autoListUl.children[0].id = selectedLiId;
-        }
           break;
         case 38:
-        e.preventDefault();
-        if(currentLi.previousElementSibling) {
-          const previousLi = currentLi.previousElementSibling;
-          currentLi.removeAttribute('id');
-          currentLi.previousElementSibling.id = selectedLiId;
-          if(previousLi.offsetTop < autoListUl.scrollTop) {
-            autoListUl.scrollTop = previousLi.offsetTop;
+          e.preventDefault();
+          if (currentLi) {
+            const previousLi = currentLi.previousElementSibling;
+            if (previousLi) {
+              currentLi.removeAttribute('id');
+              previousLi.id = selectedLiId;
+              if (previousLi.offsetTop < autoListUl.scrollTop) {
+                autoListUl.scrollTop = previousLi.offsetTop;
+              } else if (previousLi.offsetTop + previousLi.offsetHeight > autoListUl.offsetHeight + autoListUl.scrollTop) {
+                autoListUl.scrollTop = previousLi.offsetTop + previousLi.offsetHeight - autoListUl.offsetHeight;
+              }
+            }
+          } else {
+            const last = autoListUl.children[autoListUl.children.length - 1];
+            last.id = selectedLiId;
+            console.log(last);
+            autoListUl.scrollTop = last.offsetTop + last.offsetHeight - autoListUl.offsetHeight;
           }
-        }
           break;
       }
     }
   });
-  autoListUl.addEventListener('mouseover', (e)=>{
-    if(e.target.tagName == 'LI') {
+  autoListUl.addEventListener('mouseover', (e) => {
+    if (e.target.tagName == 'LI') {
       const currentLi = autoListUl.querySelector('#' + selectedLiId);
-      if(currentLi) currentLi.removeAttribute("id");
+      if (currentLi) currentLi.removeAttribute("id");
       e.target.id = selectedLiId;
     }
   });
-  autoListUl.addEventListener('mouseleave', e=>{
+  autoListUl.addEventListener('mouseleave', e => {
     const currentLi = autoListUl.querySelector('#' + selectedLiId);
-    if(currentLi) currentLi.removeAttribute("id");
-    if(input.value) {
+    if (currentLi) currentLi.removeAttribute("id");
+    if (input.value) {
       autoListUl.children[0].id = selectedLiId;
     }
   });
@@ -285,11 +297,13 @@ function handleMessageUser(form, data) {
   sendBtn.addEventListener('click', e => {
     const span = document.createElement('span');
     const next = feedback.nextElementSibling;
+
     function closeTip(e) {
       e.target.removeEventListener('keydown', closeTip);
       e.target.removeEventListener('blur', closeTip);
       form.removeChild(span);
     }
+
     function makeTip(field, text) {
       span.style.top = field.offsetTop + 'px';
       span.textContent = text;
@@ -297,6 +311,7 @@ function handleMessageUser(form, data) {
       field.addEventListener('keydown', closeTip);
       field.addEventListener('blur', closeTip);
     }
+
     function closeFeedback(e) {
       e.preventDefault();
       if (e.target.tagName == "BUTTON") {
@@ -307,7 +322,7 @@ function handleMessageUser(form, data) {
       }
     }
     e.preventDefault();
-    if(feedback.children.length === 2) {
+    if (feedback.children.length === 2) {
       feedback.removeChild(feedback.children[0]);
     }
     if (input.style.backgroundColor != customGrayBg || textarea.value == '') {
@@ -346,7 +361,7 @@ window.addEventListener('load', () => {
 });
 
 function alertListener() {
-  internalStyleHeight(alertStyleId,getPlaceholderMessage);
+  internalStyleHeight(alertStyleId, getPlaceholderMessage);
 }
 
 window.addEventListener('resize', alertListener);
@@ -367,7 +382,7 @@ getSettingsList.addEventListener('click', e => {
   }
 });
 
-getSelectTimeZone.addEventListener('change', () =>  localStorage.setItem(selectNameSpace + getSelectTimeZone.id, getSelectTimeZone.value));
+getSelectTimeZone.addEventListener('change', () => localStorage.setItem(selectNameSpace + getSelectTimeZone.id, getSelectTimeZone.value));
 /////////end global listeners////////////
 
 
