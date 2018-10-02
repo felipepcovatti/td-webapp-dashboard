@@ -300,7 +300,6 @@ function handleMessageUser(form, data) {
     function closeFeedback(e) {
       e.preventDefault();
       if (e.target.tagName == "BUTTON") {
-        form.classList.remove('simulatesending');
         feedback.classList.remove('success');
         span.innerHTML = '';
         feedback.removeEventListener('click', closeFeedback);
@@ -322,10 +321,11 @@ function handleMessageUser(form, data) {
     } else {
       feedback.insertBefore(span, feedback.children[0]);
       feedback.classList.add('success');
-      form.classList.add('simulatesending');
       span.innerHTML = `<b>Success</b> Message sent to ${input.value}`;
       next.style.marginTop = feedback.offsetHeight + parseInt(window.getComputedStyle(feedback).getPropertyValue('margin-bottom'), 10) + 'px';
       feedback.addEventListener('click', closeFeedback);
+      input.value = '';
+      textarea.value = '';
     }
   });
 }
