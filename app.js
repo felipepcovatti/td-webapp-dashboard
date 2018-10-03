@@ -314,17 +314,17 @@ function handleMessageUser(form, data) {
 
     function closeFeedback(e) {
       e.preventDefault();
-      if (e.target.tagName == "BUTTON") {
+      if (e.target.tagName == "BUTTON" || e.type == 'focus') {
         feedback.classList.remove('success');
-        span.innerHTML = '';
-        feedback.removeEventListener('click', closeFeedback);
+        while (feedback.children.length > 1) {
+          feedback.removeChild(feedback.firstChild);
+        }
         next.style.marginTop = '';
+        feedback.removeEventListener('click', closeFeedback);
+        form.removeEventListener('focus', closeFeedback, true);
       }
     }
     e.preventDefault();
-    if (feedback.children.length === 2) {
-      feedback.removeChild(feedback.children[0]);
-    }
     if (input.style.backgroundColor != customGrayBg || textarea.value == '') {
       form.appendChild(span);
       span.className = 'formtip';
@@ -341,6 +341,8 @@ function handleMessageUser(form, data) {
       feedback.addEventListener('click', closeFeedback);
       input.value = '';
       textarea.value = '';
+      input.style.backgroundColor = '';
+      form.addEventListener('focus', closeFeedback, true);
     }
   });
 }
