@@ -70,18 +70,15 @@
     targetElem.classList.add(styleElemId);
     targetElem.style.height = '';
   }
-
   function addNotifications(bellId, panelId) {
     const bell = document.getElementById(bellId);
     const panel = document.getElementById(panelId);
     const linkarrow = bell.querySelector('span:last-child');
     let firstClick = true;
-
     function setDisplay(value) {
       panel.style.display = value;
       linkarrow.style.display = value;
     }
-
     function showPanel(e) {
       if (firstClick) {
         bell.removeEventListener('click', showPanel);
@@ -92,7 +89,6 @@
         firstClick = true;
       }
     }
-
     function hidePanel(e) {
       if (!panel.contains(e.target)) {
         if (bell.contains(e.target)) firstClick = false;
@@ -102,7 +98,6 @@
         panel.removeEventListener('click', closeNotification);
       }
     }
-
     function closeNotification(e) {
       if (e.target.tagName == 'BUTTON') {
         panel.removeChild(e.target.parentNode);
@@ -115,11 +110,8 @@
         }
       }
     }
-
     bell.addEventListener('click', showPanel);
-
   }
-
   function checkBoxToggle(id) {
     const checkBtn = document.querySelector(`[name='${id}']`);
     const checkInput = document.getElementById(id);
@@ -131,7 +123,6 @@
       localStorage.setItem(checboxNameSpace + id, 'false');
     }
   }
-
   function syncLocalStorage() {
     if (localStorage.oldVisitor) {
       for (let i = 0; i < localStorage.length; i++) {
@@ -150,7 +141,6 @@
       localStorage.setItem('oldVisitor', 'true');
     }
   }
-
   function handleMessageUser(form, data) {
     const input = form.querySelector('input');
     const textarea = form.querySelector('textarea');
@@ -169,7 +159,6 @@
     })();
     const sendBtn = form.querySelector("[type='submit']");
     const feedback = form.parentNode.querySelector(`[data-for='${form.id}']`);
-
     function filterOptions() {
       let filteredLis = [];
       if (input.value) {
@@ -185,13 +174,11 @@
       }
 
     }
-
     function closeAndGoToNext(selected = true) {
       autoList.style.display = 'none';
       if (selected) input.style.backgroundColor = customGrayBg;
       autoList.nextElementSibling.focus();
     }
-
     autoListUl.innerHTML = fullNameLis.join('');
     input.addEventListener('focus', e => {
       autoList.style.display = 'block';
@@ -236,7 +223,6 @@
             } else {
               closeAndGoToNext(false);
             }
-
             break;
           case 40: //arrowdown
             e.preventDefault();
@@ -297,13 +283,11 @@
     sendBtn.addEventListener('click', e => {
       const span = document.createElement('span');
       const next = feedback.nextElementSibling;
-
       function closeTip(e) {
         e.target.removeEventListener('keydown', closeTip);
         e.target.removeEventListener('blur', closeTip);
         form.removeChild(span);
       }
-
       function makeTip(field, text) {
         span.style.top = field.offsetTop + 'px';
         span.textContent = text;
@@ -311,7 +295,6 @@
         field.addEventListener('keydown', closeTip);
         field.addEventListener('blur', closeTip);
       }
-
       function closeFeedback(e) {
         e.preventDefault();
         if (e.target.tagName == "BUTTON" || e.type == 'focus') {
@@ -325,11 +308,9 @@
           window.removeEventListener('resize', addSpaceForFeedback);
         }
       }
-
       function addSpaceForFeedback() {
         next.style.marginTop = feedback.offsetHeight + parseInt(window.getComputedStyle(feedback).getPropertyValue('margin-bottom'), 10) + 'px';
       }
-
       e.preventDefault();
       if (input.style.backgroundColor != customGrayBg || textarea.value == '') {
         form.appendChild(span);
@@ -368,13 +349,10 @@
     populateNames(usersData, 'recentactivity', 'Lorem ipsum');
     handleMessageUser(getMessageUser, usersData);
   });
-
   function alertListener() {
     internalStyleHeight(alertStyleId, getPlaceholderMessage);
   }
-
   window.addEventListener('resize', alertListener);
-
   getPlaceholderMessage.addEventListener('click', e => {
     if (e.target.tagName == 'BUTTON') {
       getPlaceholderMessage.classList.add('shrink');
@@ -382,7 +360,6 @@
       document.getElementById(alertStyleId).parentNode.removeChild(document.getElementById(alertStyleId));
     }
   });
-
   getSettingsList.addEventListener('click', e => {
     e.preventDefault();
     const checkId = e.target.getAttribute('for') || e.target.getAttribute('name');
@@ -390,7 +367,6 @@
       checkBoxToggle(checkId);
     }
   });
-
   getSelectTimeZone.addEventListener('change', () => localStorage.setItem(selectNameSpace + getSelectTimeZone.id, getSelectTimeZone.value));
   /////////end global listeners////////////
 
